@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RedditRadar - Find High-Intent Leads on Reddit Automatically</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        radar: {
+                            50: '#f0f5ff',
+                            100: '#e0e9ff',
+                            500: '#ff4500',
+                            600: '#cc3700',
+                            700: '#ff4500',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-text {
+            background: linear-gradient(135deg, #ff4500 0%, #ff8717 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 antialiased">
+
+    <!-- Navigation -->
+    <nav class="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <svg class="w-8 h-8 text-orange-500" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
+                    <circle cx="12" cy="12" r="3" fill="#ff4500"/>
+                    <path d="M12 6l1.5 3H12l1.5 3H12l1.5 3H10.5l1.5-3H12l-1.5-3H12l-1.5-3z" fill="#ff4500"/>
+                </svg>
+                <span class="text-xl font-bold text-slate-900">Reddit<span class="text-orange-500">Radar</span></span>
+            </div>
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#features" class="text-slate-600 hover:text-slate-900 font-medium">Features</a>
+                <a href="#pricing" class="text-slate-600 hover:text-slate-900 font-medium">Pricing</a>
+                <a href="#faq" class="text-slate-600 hover:text-slate-900 font-medium">FAQ</a>
+                <a href="mailto:hello@redditradar.com?subject=Start%20Free%20Trial" class="bg-orange-500 hover:bg-orange-600 text-white px-5 py-2.5 rounded-lg font-semibold transition duration-200 shadow-sm">
+                    Start Free Trial
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient text-white py-20 lg:py-28">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto text-center">
+                <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur px-4 py-2 rounded-full text-sm font-medium mb-6">
+                    <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+                    Now monitoring 50K+ Reddit conversations daily
+                </div>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6">
+                    Find Customers on Reddit <span class="gradient-text">Before Your Competitors Do</span>
+                </h1>
+                <p class="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto mb-10">
+                    RedditRadar uses AI to detect high-intent leads in real-time, score them automatically, and suggest the perfect outreach message. Turn Reddit lurkers into paying customers.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="mailto:hello@redditradar.com?subject=Start%20Free%20Trial" class="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-xl font-bold text-lg transition duration-200 shadow-lg shadow-orange-500/30">
+                        Start Free Trial →
+                    </a>
+                    <a href="#features" class="bg-white/10 hover:bg-white/20 backdrop-blur text-white px-8 py-4 rounded-xl font-semibold text-lg transition duration-200 border border-white/20">
+                        See How It Works
+                    </a>
+                </div>
+                <p class="text-sm text-slate-400 mt-4">No credit card required • 14-day free trial</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof -->
+    <section class="bg-white py-12 border-b border-slate-200">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 text-slate-400">
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-slate-900">2,500+</div>
+                    <div class="text-sm">Businesses signed up</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-slate-900">1.2M+</div>
+                    <div class="text-sm">Leads detected</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-slate-900">43%</div>
+                    <div class="text-sm">Avg. response rate</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-slate-900">4.9/5</div>
+                    <div class="text-sm">User rating</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 lg:py-28 bg-slate-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl md:text-4xl font-extrabold mb-4">Stop Manually Searching Reddit</h2>
+                <p class="text-lg text-slate-600">Let AI do the heavy lifting. RedditRadar monitors conversations 24/7 and delivers hot leads straight to your inbox.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Feature 1 -->
+                <div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-200 card-hover">
+                    <div class="w-14 h-14 bg-orange-100 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Real-Time Lead Detection</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        Our AI continuously scans thousands of subreddits for buying signals, pain points, and purchase intent. Get notified within minutes of a potential customer posting.
+                    </p>
+                    <ul class="mt-4 space-y-2 text-sm text-slate-500">
+                        <li class="flex items-center gap-2">
+                            <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            Monitor unlimited subreddits
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            Custom keyword triggers
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            Instant Slack & email alerts
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-200 card-hover">
+                    <div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">AI-Powered Intent Scoring</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        Not all mentions are created equal. Our AI scores each lead based on purchase intent, urgency, and fit—so you focus only on prospects ready to buy.
+                    </p>
+                    <ul class="mt-4 space-y-2 text-sm text-slate-500">
+                        <li class="flex items-center gap-2">
+                            <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            95% accuracy rate
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            Learns your ICP over time
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            Auto-prioritize hot leads
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-200 card-hover">
+                    <div class="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Automated Outreach Suggestions</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        Never stare at a blank screen again. Get AI-generated, personalized message suggestions that feel natural and convert—tailored to each lead's context.
+                    </p>
+                    <ul class="mt-4 space-y-2 text-sm text-slate-500">
+                        <li class="flex items-center gap-2">
+                            <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            Context-aware messaging
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            Tone customization
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            A/B test variations
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="py-20 bg-white border-t border-slate-200">
+        <div class="container mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl md:text-4xl font-extrabold mb-4">Up and Running in 5 Minutes</h2>
+                <p class="text-lg text-slate-600">No complicated setup. Just connect, configure, and start receiving leads.</p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row gap-8 max-w-4xl mx-auto">
+                <div class="flex-1 text-center">
+                    <div class="w-12 h-12 bg-orange-500 text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">1</div>
+                    <h3 class="text-lg font-bold mb-2">Connect Your Keywords</h3>
+                    <p class="text-slate-600 text-sm">Tell us what products/services you offer and which subreddits to monitor.</p>
+                </div>
+                <div class="hidden md:flex items-center">
+                    <svg class="w-8 h-8 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                    </svg>
+                </div>
+                <div class="flex-1 text-center">
+                    <div class="w-12 h-12 bg-orange-500 text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">2</div>
+                    <h3 class="text-lg font-bold mb-2">AI Does the Work</h3>
+                    <p class="text-slate-600 text-sm">Our system scans Reddit 24/7 and scores every potential lead for intent.</p>
+                </div>
+                <div class="hidden md:flex items-center">
+                    <svg class="w-8 h-8 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                    </svg>
+                </div>
+                <div class="flex-1 text-center">
+                    <div class="w-12 h-12 bg-orange-500 text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">3</div>
+                    <h3 class="text-lg font-bold mb-2">Close More Deals</h3>
+                    <p class="text-slate-600 text-sm">Get notified with scored leads and AI-crafted outreach suggestions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20 lg:py-28 bg-slate-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl md:text-4xl font-extrabold mb-4">Simple, Transparent Pricing</h2>
+                <p class="text-lg text-slate-600">Start free. Scale as you grow. No hidden fees.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <!-- Basic Plan -->
+                <div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-200 card-hover">
+                    <div class="mb-6">
+                        <h3 class="text-lg font-semibold text-slate-500 mb-1">Basic</h3>
+                        <div class="flex items-baseline gap-2">
+                            <span class="text-4xl font-extrabold">$29</span>
+                            <span class="text-slate-500">/month</span>
+                        </div>
+                    </div>
+                    <p class="text-slate-600 mb-6">Perfect for startups and solo founders getting started with Reddit lead generation.</p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            <span class="text-slate-700">Up to 10 subreddits</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            <span class="text-slate-700">500 leads/month</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            <span class="text-slate-700">AI intent scoring</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            <span class="text-slate-700">Email notifications</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            <span class="text-slate-700">Basic outreach templates</span>
+                        </li>
+                    </ul>
+                    <a href="mailto:hello@redditradar.com?subject=Start%20Free%20Trial%20-%20Basic%20Plan" class="block w-full text-center bg-slate-900 hover:bg-slate-800 text-white py-3 rounded-xl font-semibold transition duration-200">
+                        Start Free Trial
+                    </a>
+                </div>
+
+                <!-- Pro Plan -->
+                <div class="bg-slate-900 rounded-2xl p-8 shadow-xl relative overflow-hidden">
+                    <div class="absolute top-4 right-4 bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full">
+                        MOST POPULAR
+                    </div>
+                    <div class="mb-6">
+                        <h3 class="text-lg font-semibold text-slate-400 mb-1">Pro</h3>
+                        <div class="flex items-baseline gap-2">
+                            <span class="text-4xl font-extrabold text-white">$79</span>
+                            <span class="text-slate-400">/month</span>
+                        </div>
+                    </div>
+                    <p class="text-slate-400 mb-6">For growing teams who want maximum lead flow and advanced AI features.</p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-orange-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            <span class="text-slate-300">Unlimited subreddits</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-orange-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            <span class="text-slate-300">Unlimited leads</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-orange-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            <span class="text-slate-300">Advanced AI intent scoring</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-orange-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            <span class="text-slate-300">Slack + email + webhook alerts</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-orange-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            <span class="text-slate-300">AI-powered outreach suggestions</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-orange-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            <span class="text-slate-300">Team collaboration (3 seats)</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-orange-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            <span class="text-slate-300">API access</span>
+                        </li>
+                    </ul>
+                    <a href="mailto:hello@redditradar.com?subject=Start%20Free%20Trial%20-%20Pro%20Plan" class="block w-full text-center bg-orange-500 hover:bg-orange-600 text-white py-3 rounded-xl font-semibold transition duration-200">
+                        Start Free Trial
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 bg-white border-t border-slate-200">
+        <div class="container mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl md:text-4xl font-extrabold mb-4">Frequently Asked Questions</h2>
+                <p class="text-lg text-slate-600">Everything you need to know about RedditRadar.</p>
+            </div>
+            
+            <div class="max-w-2xl mx-auto space-y-6">
+                <details class="group bg-slate-50 rounded-xl p-6">
+                    <summary class="flex justify-between items-center cursor-pointer list-none font-semibold">
+                        How does RedditRadar detect leads?
+                        <svg class="w-5 h-5 text-slate-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <p class="mt-4 text-slate-600">Our AI monitors Reddit in real-time for buying signals, questions about products in your category, complaints about competitors, and other high-intent behaviors. We use natural language processing to identify posts where someone is actively looking for a solution you provide.</p>
+                </details>
+                
+                <details class="group bg-slate-50 rounded-xl p-6">
+                    <summary class="flex justify-between items-center cursor-pointer list-none font-semibold">
+                        Is this against Reddit's terms of service?
+                        <svg class="w-5 h-5 text-slate-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <p class="mt-4 text-slate-600">RedditRadar only monitors public posts and helps you engage authentically. We don't automate posting or use bots—you always have the final say on your outreach. Think of it as a more efficient way to find conversations that are already happening.</p>
+                </details>
+                
+                <details class="group bg-slate-50 rounded-xl p-6">
+                    <summary class="flex justify-between items-center cursor-pointer list-none font-semibold">
+                        What's the 14-day free trial?
+                        <svg class="w-5 h-5 text-slate-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <p class="mt-4 text-slate-600">You get full access to all Pro features for 14 days—no credit card required. Set up your keywords, connect your subreddits, and start receiving leads. If you love it, choose a plan that fits your needs. If not, walk away with no obligations.</p>
+                </details>
+                
+                <details class="group bg-slate-50 rounded-xl p-6">
+                    <summary class="flex justify-between items-center cursor-pointer list-none font-semibold">
+                        Can I cancel anytime?
+                        <svg class="w-5 h-5 text-slate-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <p class="mt-4 text-slate-600">Absolutely. No long-term contracts, no cancellation fees. You can upgrade, downgrade, or cancel your subscription at any time from your dashboard. We'll even prorate any unused time if you cancel mid-cycle.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 hero-gradient text-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-4xl font-extrabold mb-4">Ready to Find Your Next Customer on Reddit?</h2>
+            <p class="text-lg text-slate-300 max-w-2xl mx-auto mb-8">Join 2,500+ businesses already using RedditRadar to find high-intent leads. Start your free trial today.</p>
+            <a href="mailto:hello@redditradar.com?subject=Start%20Free%20Trial" class="inline-block bg-orange-500 hover:bg-orange-600 text-white px-10 py-4 rounded-xl font-bold text-lg transition duration-200 shadow-lg shadow-orange-500/30">
+                Start Free Trial →
+            </a>
+            <p class="text-sm text-slate-400 mt-4">No credit card required • Setup in 5 minutes</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="flex items-center gap-2">
+                    <span class="text-xl font-bold text-white">Reddit<span class="text-orange-500">Radar</span></span>
+                </div>
+                <div class="flex gap-6 text-sm">
+                    <a href="#" class="hover:text-white transition">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition">Terms of Service</a>
+                    <a href="mailto:hello@redditradar.com" class="hover:text-white transition">Contact</a>
+                </div>
+            </div>
+            <div class="border-t border-slate-800 mt-8 pt-8 text-center text-sm">
+                © 2026 RedditRadar. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
