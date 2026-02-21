@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You - Pain Scanner</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif; line-height: 1.6; color: #1a1a1a; min-height: 100vh; display: flex; flex-direction: column; }
+        .container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
+        
+        /* Header */
+        header { background: white; padding: 20px 0; border-bottom: 1px solid #e5e5e5; }
+        nav { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 24px; font-weight: 700; color: #2563eb; text-decoration: none; }
+        .logo:hover { color: #1d4ed8; }
+        
+        /* Main Content */
+        main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 60px 20px; background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); }
+        
+        .thank-you-card { background: white; border-radius: 16px; padding: 50px 40px; text-align: center; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); max-width: 600px; width: 100%; }
+        
+        .success-icon { width: 80px; height: 80px; background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 30px; box-shadow: 0 4px 14px rgba(34, 197, 94, 0.4); }
+        .success-icon svg { width: 40px; height: 40px; stroke: white; }
+        
+        .thank-you-card h1 { font-size: 32px; font-weight: 800; color: #0f172a; margin-bottom: 15px; }
+        .thank-you-card .subtitle { font-size: 18px; color: #475569; margin-bottom: 30px; }
+        
+        .order-details { background: #f8fafc; border-radius: 12px; padding: 25px; margin-bottom: 30px; text-align: left; }
+        .order-details h3 { font-size: 14px; font-weight: 600; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 15px; }
+        .order-item { display: flex; justify-content: space-between; align-items: flex-start; padding: 12px 0; border-bottom: 1px solid #e2e8f0; }
+        .order-item:last-child { border-bottom: none; }
+        .order-item .label { color: #475569; }
+        .order-item .value { font-weight: 600; color: #0f172a; text-align: right; }
+        .order-item .value .highlight { color: #22c55e; }
+        .order-item .value .email { font-size: 14px; color: #2563eb; }
+        
+        .delivery-notice { background: #dcfce7; border-radius: 8px; padding: 16px 20px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+        .delivery-notice .icon { font-size: 24px; }
+        .delivery-notice .text { text-align: left; }
+        .delivery-notice .text strong { display: block; color: #166534; font-size: 15px; }
+        .delivery-notice .text span { font-size: 14px; color: #166534; opacity: 0.8; }
+        
+        .contact-section { padding: 20px 0; border-top: 1px solid #e2e8f0; }
+        .contact-section p { color: #64748b; font-size: 15px; margin-bottom: 10px; }
+        .contact-section a { color: #2563eb; text-decoration: none; font-weight: 500; }
+        .contact-section a:hover { text-decoration: underline; }
+        
+        .btn { display: inline-block; background: #2563eb; color: white; padding: 14px 28px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 16px; transition: background 0.2s ease; }
+        .btn:hover { background: #1d4ed8; }
+        
+        /* Footer */
+        footer { background: #f8fafc; padding: 25px 0; border-top: 1px solid #e5e5e5; }
+        .footer-content { text-align: center; }
+        .footer-links { display: flex; justify-content: center; gap: 25px; margin-bottom: 15px; }
+        .footer-links a { color: #64748b; text-decoration: none; font-size: 14px; }
+        .footer-links a:hover { color: #2563eb; }
+        .copyright { color: #94a3b8; font-size: 13px; }
+        
+        @media (max-width: 600px) {
+            .thank-you-card { padding: 35px 25px; }
+            .thank-you-card h1 { font-size: 26px; }
+            .thank-you-card .subtitle { font-size: 16px; }
+            .order-item { flex-direction: column; gap: 4px; }
+            .order-item .value { text-align: left; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://pain-scanner.onrender.com" class="logo">🔍 Pain Scanner</a>
+                <a href="https://pain-scanner.onrender.com" class="btn">Back to Home</a>
+            </nav>
+        </div>
+    </header>
+    
+    <main>
+        <div class="container">
+            <div class="thank-you-card">
+                <div class="success-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                </div>
+                
+                <h1>Thank You for Your Purchase!</h1>
+                <p class="subtitle">Your order has been confirmed. We're getting started on your Custom Pain Point Report right now.</p>
+                
+                <div class="delivery-notice">
+                    <div class="icon">📧</div>
+                    <div class="text">
+                        <strong>Your report will arrive within 24 hours</strong>
+                        <span>We'll send it to the email address you provided during checkout</span>
+                    </div>
+                </div>
+                
+                <div class="order-details">
+                    <h3>Order Summary</h3>
+                    <div class="order-item">
+                        <span class="label">Product</span>
+                        <span class="value">Custom Pain Point Report</span>
+                    </div>
+                    <div class="order-item">
+                        <span class="label">Includes</span>
+                        <span class="value">PDF Report + CSV Data + Real Quotes</span>
+                    </div>
+                    <div class="order-item">
+                        <span class="label">Delivery Time</span>
+                        <span class="value"><span class="highlight">Within 24 hours</span></span>
+                    </div>
+                    <div class="order-item">
+                        <span class="label">Questions?</span>
+                        <span class="value"><span class="email">ezra@anchovylabs.ai</span></span>
+                    </div>
+                </div>
+                
+                <div class="contact-section">
+                    <p>Need help or have questions about your order?</p>
+                    <p>Reply to your confirmation email or reach out directly:</p>
+                    <a href="mailto:ezra@anchovylabs.ai">ezra@anchovylabs.ai</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="https://pain-scanner.onrender.com">Pain Scanner</a>
+                    <a href="mailto:ezra@anchovylabs.ai">Support</a>
+                    <a href="#">Privacy</a>
+                </div>
+                <div class="copyright">© 2026 Pain Scanner. Built by Anchovy Labs.</div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
