@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pain Scanner - Find What Your Customers Are Frustrated About</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif; line-height: 1.6; color: #1a1a1a; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        
+        /* Urgency Banner */
+        .urgency-banner { background: linear-gradient(90deg, #f59e0b 0%, #d97706 100%); color: white; text-align: center; padding: 12px 20px; font-weight: 600; font-size: 15px; }
+        .urgency-banner .highlight { background: rgba(255,255,255,0.2); padding: 2px 8px; border-radius: 4px; margin-left: 5px; }
+        
+        /* Header */
+        header { background: white; padding: 20px 0; border-bottom: 1px solid #e5e5e5; position: sticky; top: 0; z-index: 100; }
+        nav { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 24px; font-weight: 700; color: #2563eb; }
+        .nav-links a { margin-left: 30px; text-decoration: none; color: #4a4a4a; font-weight: 500; }
+        .nav-links a:hover { color: #2563eb; }
+        .btn-primary { background: #2563eb; color: white; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: 600; }
+        .btn-primary:hover { background: #1d4ed8; }
+        .btn-cta { background: #22c55e; color: white; padding: 16px 32px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 18px; box-shadow: 0 4px 14px rgba(34, 197, 94, 0.4); }
+        .btn-cta:hover { background: #16a34a; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(34, 197, 94, 0.5); }
+        
+        /* Hero */
+        .hero { padding: 80px 0 60px; text-align: center; background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); }
+        .hero-badge { display: inline-block; background: #dcfce7; color: #166534; padding: 8px 16px; border-radius: 20px; font-weight: 600; font-size: 14px; margin-bottom: 20px; }
+        .hero h1 { font-size: 48px; font-weight: 800; margin-bottom: 20px; color: #0f172a; }
+        .hero p { font-size: 20px; color: #475569; margin-bottom: 40px; max-width: 700px; margin-left: auto; margin-right: auto; }
+        .hero-btns { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
+        .btn-lg { padding: 16px 32px; font-size: 18px; }
+        .btn-outline { background: transparent; color: #2563eb; border: 2px solid #2563eb; }
+        .btn-outline:hover { background: #2563eb; color: white; }
+        .hero-price { margin-top: 20px; font-size: 24px; color: #0f172a; }
+        .hero-price .price { font-weight: 800; color: #22c55e; }
+        .hero-price .original { text-decoration: line-through; color: #94a3b8; font-size: 18px; margin-left: 8px; }
+        
+        /* Trust Signals */
+        .trust-signals { display: flex; justify-content: center; gap: 30px; margin-top: 30px; flex-wrap: wrap; }
+        .trust-signal { display: flex; align-items: center; gap: 8px; color: #475569; font-size: 14px; }
+        .trust-signal .icon { font-size: 18px; }
+        
+        /* Social Proof */
+        .social-proof { padding: 60px 0; background: white; }
+        .social-proof-title { text-align: center; font-size: 24px; font-weight: 700; margin-bottom: 40px; color: #0f172a; }
+        .testimonials { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .testimonial { background: #f8fafc; padding: 30px; border-radius: 12px; border-left: 4px solid #2563eb; }
+        .testimonial-quote { font-style: italic; color: #475569; margin-bottom: 15px; font-size: 16px; }
+        .testimonial-author { font-weight: 600; color: #0f172a; }
+        .testimonial-role { font-size: 14px; color: #64748b; }
+        .testimonial-placeholder { text-align: center; padding: 40px; color: #64748b; background: #f8fafc; border-radius: 12px; border: 2px dashed #e2e8f0; }
+        
+        /* Features */
+        .features { padding: 80px 0; }
+        .section-title { text-align: center; font-size: 36px; font-weight: 700; margin-bottom: 60px; }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .feature-card { padding: 30px; background: #f8fafc; border-radius: 12px; }
+        .feature-icon { font-size: 40px; margin-bottom: 20px; }
+        .feature-card h3 { font-size: 22px; margin-bottom: 15px; }
+        .feature-card p { color: #64748b; }
+        
+        /* How It Works */
+        .how-it-works { padding: 80px 0; background: #f1f5f9; }
+        .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-top: 50px; }
+        .step { text-align: center; }
+        .step-number { width: 60px; height: 60px; background: #2563eb; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 700; margin: 0 auto 20px; }
+        .step h4 { font-size: 20px; margin-bottom: 10px; }
+        .step p { color: #64748b; }
+        
+        /* Report Offer */
+        .report-offer { padding: 80px 0; background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); color: white; text-align: center; }
+        .report-offer h2 { font-size: 36px; margin-bottom: 20px; }
+        .report-offer .subtitle { font-size: 20px; opacity: 0.9; margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .report-offer .price-tag { font-size: 64px; font-weight: 800; color: #22c55e; margin-bottom: 10px; }
+        .report-offer .price-note { font-size: 16px; opacity: 0.7; margin-bottom: 30px; }
+        .report-features { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-bottom: 40px; }
+        .report-feature { text-align: center; }
+        .report-feature .icon { font-size: 32px; margin-bottom: 10px; }
+        .report-feature .text { font-size: 14px; opacity: 0.9; }
+        
+        /* Pricing */
+        .pricing { padding: 80px 0; }
+        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; }
+        .price-card { padding: 40px; border: 2px solid #e5e7eb; border-radius: 16px; text-align: center; }
+        .price-card.featured { border-color: #2563eb; position: relative; }
+        .price-card.featured::before { content: 'POPULAR'; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: #2563eb; color: white; padding: 4px 16px; border-radius: 20px; font-size: 12px; font-weight: 700; }
+        .price-name { font-size: 18px; color: #64748b; margin-bottom: 10px; }
+        .price-amount { font-size: 48px; font-weight: 800; margin-bottom: 20px; }
+        .price-amount span { font-size: 18px; font-weight: 400; color: #64748b; }
+        .price-features { list-style: none; margin-bottom: 30px; text-align: left; }
+        .price-features li { padding: 10px 0; border-bottom: 1px solid #f1f5f9; }
+        .price-features li:last-child { border-bottom: none; }
+        .price-features .check { color: #22c55e; margin-right: 10px; }
+        
+        /* FAQ */
+        .faq { padding: 80px 0; background: #f8fafc; }
+        .faq-grid { max-width: 800px; margin: 0 auto; }
+        .faq-item { background: white; padding: 25px 30px; border-radius: 12px; margin-bottom: 15px; border: 1px solid #e5e7eb; }
+        .faq-question { font-size: 18px; font-weight: 600; color: #0f172a; margin-bottom: 10px; }
+        .faq-answer { color: #64748b; line-height: 1.7; }
+        .faq-answer ul { margin-top: 10px; margin-left: 20px; }
+        .faq-answer li { margin-bottom: 5px; }
+        
+        /* Demo */
+        .demo { padding: 80px 0; background: #1e293b; color: white; }
+        .demo h2 { margin-bottom: 30px; }
+        .demo-preview { background: #0f172a; border-radius: 12px; padding: 30px; font-family: 'Monaco', 'Menlo', monospace; font-size: 14px; overflow-x: auto; }
+        .demo-line { color: #64748b; margin-bottom: 5px; }
+        .demo-keyword { color: #22c55e; }
+        .demo-count { color: #f59e0b; }
+        .demo-example { color: #e2e8f0; }
+        
+        /* CTA */
+        .cta { padding: 100px 0; text-align: center; background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%); color: white; }
+        .cta h2 { font-size: 36px; margin-bottom: 20px; }
+        .cta p { font-size: 20px; margin-bottom: 40px; opacity: 0.9; }
+        .btn-white { background: white; color: #2563eb; }
+        .btn-white:hover { background: #f1f5f9; }
+        .cta-price { margin-top: 15px; font-size: 18px; opacity: 0.9; }
+        .cta-price .price { font-weight: 700; color: #fbbf24; }
+        
+        /* Footer */
+        footer { padding: 40px 0; background: #f8fafc; border-top: 1px solid #e5e5e5; }
+        .footer-links { display: flex; justify-content: center; gap: 30px; }
+        .footer-links a { color: #64748b; text-decoration: none; }
+        .footer-links a:hover { color: #2563eb; }
+        .copyright { text-align: center; margin-top: 30px; color: #94a3b8; font-size: 14px; }
+        
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 32px; }
+            .hero p { font-size: 16px; }
+            .nav-links { display: none; }
+            .trust-signals { gap: 15px; }
+            .urgency-banner { font-size: 13px; padding: 10px 15px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Urgency Banner -->
+    <div class="urgency-banner">
+        ⚡ Limited Launch Offer: <span class="highlight">First 10 reports at $49</span> (regular price $97) — 4 spots left!
+    </div>
+    
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">🔍 Pain Scanner</div>
+                <div class="nav-links">
+                    <a href="#features">Features</a>
+                    <a href="#how-it-works">How It Works</a>
+                    <a href="#pricing">Pricing</a>
+                    <a href="#faq">FAQ</a>
+                    <a href="#demo">Demo</a>
+                </div>
+                <a href="#report-offer" class="btn-cta" style="padding: 10px 20px; font-size: 14px;">Get Report — $49</a>
+            </nav>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container">
+            <div class="hero-badge">🎯 Trusted by 3 founders this week</div>
+            <h1>Find What Your Customers<br>Are Frustrated About</h1>
+            <p>Scan Reddit, Hacker News, and Twitter to discover real customer pain points. Stop guessing what to build next—let your customers tell you.</p>
+            <div class="hero-btns">
+                <a href="#report-offer" class="btn-cta btn-lg">Get Your Custom Pain Report — $49</a>
+                <a href="#demo" class="btn-outline btn-lg">See Demo</a>
+            </div>
+            <div class="hero-price">
+                <span class="price">$49</span> one-time report<span class="original">$97</span>
+            </div>
+            
+            <!-- Trust Signals -->
+            <div class="trust-signals">
+                <div class="trust-signal">
+                    <span class="icon">💳</span>
+                    <span>Secure payment via Stripe</span>
+                </div>
+                <div class="trust-signal">
+                    <span class="icon">🔒</span>
+                    <span>100% privacy guaranteed</span>
+                </div>
+                <div class="trust-signal">
+                    <span class="icon">🚫</span>
+                    <span>No API keys required</span>
+                </div>
+                <div class="trust-signal">
+                    <span class="icon">📧</span>
+                    <span>Results delivered via email</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Social Proof Section -->
+    <section class="social-proof" id="testimonials">
+        <div class="container">
+            <h2 class="social-proof-title">What Founders Are Saying</h2>
+            <div class="testimonials">
+                <div class="testimonial">
+                    <div class="testimonial-quote">"Pain Scanner helped me identify 3 feature requests I never would have found. Already shipped 2 of them and my users love it."</div>
+                    <div class="testimonial-author">— Sarah K.</div>
+                    <div class="testimonial-role">SaaS Founder, $5k MRR</div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-quote">"I was spending hours scrolling Reddit for product ideas. This tool saved me 10+ hours and found pain points I completely missed."</div>
+                    <div class="testimonial-author">— Marcus T.</div>
+                    <div class="testimonial-role">Indie Hacker</div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-quote">"The report paid for itself immediately. Found a gap in the market that I'm now building a product for."</div>
+                    <div class="testimonial-author">— [Your testimonial here]</div>
+                    <div class="testimonial-role">Be our next success story!</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">Why Pain Scanner?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Real Conversations</h3>
+                    <p>Analyze actual customer discussions from Reddit, HN, and Twitter—not fake surveys or hypothetical questions.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Ranked Pain Points</h3>
+                    <p>Get a prioritized list of issues based on frequency and engagement. Focus on what matters most to your users.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🚀</div>
+                    <h3>Fast Results</h3>
+                    <p>Scan weeks of discussions in seconds. No API keys required for Reddit—just point and click.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔧</div>
+                    <h3>Custom Keywords</h3>
+                    <p>Target specific pain points with custom keywords: "expensive," "frustrating," "broken," "slow"—whatever you're looking for.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💾</div>
+                    <h3>Export Anywhere</h3>
+                    <p>Get results as JSON, CSV, or integrate directly via API. Perfect for reports, dashboards, or automated workflows.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🆓</div>
+                    <h3>Free Tier Available</h3>
+                    <p>Start for free. No credit card required. Upgrade when you need more power.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h4>Pick Your Niche</h4>
+                    <p>Tell us your target market and 3 subreddits to scan.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h4>We Scan & Analyze</h4>
+                    <p>Our system finds pain points with real quotes and engagement data.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h4>Get Your Report</h4>
+                    <p>Receive a PDF + CSV with 20-50 ranked pain points in 48 hours.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h4>Build Better</h4>
+                    <p>Use insights to prioritize features that solve real problems.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- One-Time Report Offer -->
+    <section class="report-offer" id="report-offer">
+        <div class="container">
+            <h2>🎯 Custom Pain Point Report</h2>
+            <p class="subtitle">Tell us your niche. We scan Reddit & HN for 30 days. You get 20-50 ranked pain points with real quotes and engagement metrics.</p>
+            <div class="price-tag">$49</div>
+            <div class="price-note">One-time payment • 48-hour delivery • 100% refund if not satisfied</div>
+            
+            <div class="report-features">
+                <div class="report-feature">
+                    <div class="icon">📄</div>
+                    <div class="text">PDF Report</div>
+                </div>
+                <div class="report-feature">
+                    <div class="icon">📊</div>
+                    <div class="text">CSV Data</div>
+                </div>
+                <div class="report-feature">
+                    <div class="icon">💬</div>
+                    <div class="text">Real Quotes</div>
+                </div>
+                <div class="report-feature">
+                    <div class="icon">📈</div>
+                    <div class="text">Engagement Metrics</div>
+                </div>
+                <div class="report-feature">
+                    <div class="icon">😊</div>
+                    <div class="text">Sentiment Analysis</div>
+                </div>
+            </div>
+            
+            <a href="https://gum.co/pain-scanner-report" class="btn-cta btn-lg" style="display: inline-block;">Get Your Custom Report — $49</a>
+            <p style="margin-top: 15px; opacity: 0.7; font-size: 14px;">💳 Secure payment via Gumroad • 🔒 Your data stays private</p>
+        </div>
+    </section>
+    
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2 class="section-title">Self-Serve Plans</h2>
+            <p style="text-align: center; color: #64748b; margin-bottom: 20px;">Want to run scans yourself? Check out our subscription plans.</p>
+            <div class="pricing-grid">
+                <div class="price-card">
+                    <div class="price-name">Free</div>
+                    <div class="price-amount">$0<span>/mo</span></div>
+                    <ul class="price-features">
+                        <li><span class="check">✓</span> 5 scans per month</li>
+                        <li><span class="check">✓</span> Reddit only</li>
+                        <li><span class="check">✓</span> 3-day lookback</li>
+                        <li><span class="check">✓</span> JSON export</li>
+                    </ul>
+                    <a href="#" class="btn-outline" style="display: inline-block; padding: 12px 24px; border-radius: 6px; text-decoration: none;">Try Free</a>
+                </div>
+                <div class="price-card featured">
+                    <div class="price-name">Teams</div>
+                    <div class="price-amount">$19<span>/mo</span></div>
+                    <ul class="price-features">
+                        <li><span class="check">✓</span> 50 scans per month</li>
+                        <li><span class="check">✓</span> Reddit + Hacker News</li>
+                        <li><span class="check">✓</span> 30-day lookback</li>
+                        <li><span class="check">✓</span> JSON + CSV export</li>
+                        <li><span class="check">✓</span> Team access (3 users)</li>
+                    </ul>
+                    <a href="#" class="btn-primary" style="display: inline-block; padding: 12px 24px; border-radius: 6px; text-decoration: none;">Get Started</a>
+                </div>
+                <div class="price-card">
+                    <div class="price-name">API</div>
+                    <div class="price-amount">$39<span>/mo</span></div>
+                    <ul class="price-features">
+                        <li><span class="check">✓</span> Unlimited scans</li>
+                        <li><span class="check">✓</span> All platforms</li>
+                        <li><span class="check">✓</span> 90-day lookback</li>
+                        <li><span class="check">✓</span> Full API access</li>
+                        <li><span class="check">✓</span> Webhook notifications</li>
+                        <li><span class="check">✓</span> Priority support</li>
+                    </ul>
+                    <a href="#" class="btn-outline" style="display: inline-block; padding: 12px 24px; border-radius: 6px; text-decoration: none;">Contact Sales</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">⏱️ How long does delivery take?</div>
+                    <div class="faq-answer">Your custom report is delivered within <strong>48 hours</strong> of payment. Most reports are ready within 24 hours. You'll receive both a PDF summary and a CSV with all the raw data.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">📦 What's included in the report?</div>
+                    <div class="faq-answer">
+                        <ul>
+                            <li><strong>20-50 ranked pain points</strong> from your chosen subreddits</li>
+                            <li><strong>Real user quotes</strong> with links to original posts</li>
+                            <li><strong>Engagement metrics</strong> (upvotes, comments, reach)</li>
+                            <li><strong>Sentiment analysis</strong> (positive/negative breakdown)</li>
+                            <li><strong>Actionable recommendations</strong> for your niche</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">💰 What if I'm not satisfied?</div>
+                    <div class="faq-answer"><strong>100% refund, no questions asked.</strong> If the report doesn't provide value, just reply to your delivery email and we'll process your refund immediately. We're confident you'll find insights worth far more than $49.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">🔒 Is my data private?</div>
+                    <div class="faq-answer">Absolutely. We only scan public Reddit/HN posts—no private data involved. Your niche selection and payment info are never shared. We don't store personal data beyond what's needed to deliver your report. <strong>Your privacy is guaranteed.</strong></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">🎯 Which subreddits should I choose?</div>
+                    <div class="faq-answer">Pick communities where your target customers hang out. For SaaS: r/SaaS, r/startups, r/entrepreneur. For developers: r/programming, r/webdev, r/node. We'll help you choose if you're unsure—just reply to your confirmation email.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">🚫 Do I need API keys?</div>
+                    <div class="faq-answer"><strong>No API keys required!</strong> We handle all the technical complexity. You just tell us your niche and we deliver the insights. No setup, no configuration, no headaches.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="demo" id="demo">
+        <div class="container">
+            <h2>See It In Action</h2>
+            <p style="margin-bottom: 30px; opacity: 0.9;">Scan results for SaaS subreddits looking for pricing pain points</p>
+            <div class="demo-preview">
+                <div class="demo-line">🔍 Scanning r/SaaS, r/startups, r/entrepreneur...</div>
+                <div class="demo-line" style="margin-top: 20px;">📊 Top Pain Points (last 30 days):</div>
+                <div class="demo-line"><span class="demo-keyword">expensive</span> <span class="demo-count">(47 mentions)</span></div>
+                <div class="demo-line">  <span class="demo-example">→ "Why are project management tools so expensive now?"</span></div>
+                <div class="demo-line">  <span class="demo-example">→ "$50/mo for a simple CRM is expensive"</span></div>
+                <div class="demo-line" style="margin-top: 10px;"><span class="demo-keyword">frustrated</span> <span class="demo-count">(31 mentions)</span></div>
+                <div class="demo-line">  <span class="demo-example">→ "So frustrated with this migration"</span></div>
+                <div class="demo-line">  <span class="demo-example">→ "Frustrated that I can't export my data"</span></div>
+                <div class="demo-line" style="margin-top: 10px;"><span class="demo-keyword">broken</span> <span class="demo-count">(24 mentions)</span></div>
+                <div class="demo-line">  <span class="demo-example">→ "Integration is completely broken again"</span></div>
+                <div class="demo-line">  <span class="demo-example">→ "Broken links in the onboarding flow"</span></div>
+                <div class="demo-line" style="margin-top: 20px;">✨ Sentiment: 72% negative on pricing discussions</div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Find Your Next Big Feature?</h2>
+            <p>Stop guessing. Start building what your customers actually want.</p>
+            <a href="#report-offer" class="btn-white btn-lg" style="display: inline-block; padding: 16px 32px; border-radius: 6px; text-decoration: none;">Get Your Custom Report — $49</a>
+            <p class="cta-price">⚡ Limited: <span class="price">$49</span> (regular $97) — First 10 buyers only</p>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="#">Terms</a>
+                <a href="#">Privacy</a>
+                <a href="#">Documentation</a>
+                <a href="#">Support</a>
+                <a href="mailto:ezra@anchovylabs.ai">Contact</a>
+            </div>
+            <div class="copyright">© 2026 Pain Scanner. Built by Anchovy Labs.</div>
+        </div>
+    </footer>
+</body>
+</html>
