@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RevenueBack - Recover Your Lost Stripe Revenue</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif; line-height: 1.6; color: #1e293b; background-color: #f8fafc; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        
+        /* Header */
+        header { background: white; padding: 15px 0; border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 100; }
+        nav { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 22px; font-weight: 800; color: #0f172a; text-decoration: none; display: flex; align-items: center; gap: 8px; }
+        .logo span { color: #2563eb; }
+        .nav-links { display: flex; gap: 25px; align-items: center; }
+        .nav-links a { text-decoration: none; color: #64748b; font-weight: 500; font-size: 15px; transition: color 0.2s; }
+        .nav-links a:hover { color: #2563eb; }
+        
+        /* Hero Section */
+        .hero { padding: 90px 0 70px; text-align: center; background: white; }
+        .hero-badge { display: inline-block; background: #dbeafe; color: #1e40af; padding: 6px 16px; border-radius: 9999px; font-size: 14px; font-weight: 600; margin-bottom: 24px; }
+        .hero h1 { font-size: 56px; font-weight: 850; color: #0f172a; line-height: 1.1; margin-bottom: 24px; letter-spacing: -0.02em; }
+        .hero h1 span { color: #2563eb; }
+        .hero p { font-size: 20px; color: #475569; max-width: 700px; margin: 0 auto 40px; }
+        
+        .btn { display: inline-block; background: #2563eb; color: white; padding: 16px 32px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 18px; transition: all 0.2s; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2); }
+        .btn:hover { background: #1d4ed8; transform: translateY(-1px); box-shadow: 0 6px 15px rgba(37, 99, 235, 0.3); }
+        .hero-meta { margin-top: 20px; color: #94a3b8; font-size: 14px; display: flex; align-items: center; justify-content: center; gap: 15px; }
+        .hero-meta span { display: flex; align-items: center; gap: 5px; }
+
+        /* Problem Section */
+        .problem { padding: 80px 0; background: #f8fafc; border-top: 1px solid #e2e8f0; }
+        .section-tag { color: #2563eb; font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px; display: block; }
+        .problem h2 { font-size: 36px; font-weight: 800; color: #0f172a; margin-bottom: 30px; letter-spacing: -0.01em; }
+        .problem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .problem-text p { font-size: 18px; color: #475569; margin-bottom: 20px; }
+        .problem-list { list-style: none; }
+        .problem-list li { display: flex; align-items: center; gap: 12px; margin-bottom: 15px; color: #334155; font-weight: 500; }
+        .problem-list li svg { color: #ef4444; flex-shrink: 0; }
+        
+        /* Advantage Section */
+        .advantage { padding: 80px 0; background: white; }
+        .advantage h2 { font-size: 36px; font-weight: 800; color: #0f172a; margin-bottom: 50px; text-align: center; }
+        .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .feature-card { padding: 40px; border-radius: 20px; background: #f8fafc; border: 1px solid #e2e8f0; transition: transform 0.2s; }
+        .feature-card:hover { transform: translateY(-5px); border-color: #cbd5e1; }
+        .feature-icon { width: 50px; height: 50px; background: #2563eb; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px; color: white; }
+        .feature-card h3 { font-size: 20px; font-weight: 700; color: #0f172a; margin-bottom: 16px; }
+        .feature-card p { color: #475569; font-size: 15px; line-height: 1.6; }
+
+        /* Social Proof */
+        .social-proof { padding: 60px 0; background: #0f172a; color: white; text-align: center; }
+        .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+        .stat-item h4 { font-size: 48px; font-weight: 800; color: #3b82f6; margin-bottom: 8px; }
+        .stat-item p { color: #94a3b8; font-size: 16px; font-weight: 500; }
+
+        /* Pricing */
+        .pricing { padding: 100px 0; background: #f8fafc; }
+        .pricing-header { text-align: center; margin-bottom: 60px; }
+        .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; max-width: 1000px; margin: 0 auto; }
+        .price-card { background: white; padding: 40px; border-radius: 24px; border: 1px solid #e2e8f0; text-align: center; display: flex; flex-direction: column; }
+        .price-card.popular { border: 2px solid #2563eb; position: relative; transform: scale(1.05); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); }
+        .popular-badge { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: #2563eb; color: white; padding: 4px 12px; border-radius: 9999px; font-size: 12px; font-weight: 700; text-transform: uppercase; }
+        .price-card h3 { font-size: 18px; color: #64748b; margin-bottom: 16px; }
+        .price-amount { font-size: 48px; font-weight: 800; color: #0f172a; margin-bottom: 8px; }
+        .price-amount span { font-size: 16px; color: #64748b; font-weight: 500; }
+        .price-card p { color: #64748b; font-size: 14px; margin-bottom: 24px; }
+        .price-features { list-style: none; text-align: left; margin-bottom: 32px; flex: 1; }
+        .price-features li { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; font-size: 14px; color: #334155; }
+        .price-features li svg { color: #22c55e; flex-shrink: 0; }
+        .price-card .btn { width: 100%; padding: 12px; font-size: 16px; }
+        .btn-outline { background: transparent; color: #2563eb; border: 2px solid #2563eb; box-shadow: none; }
+        .btn-outline:hover { background: #f0f7ff; transform: none; box-shadow: none; }
+
+        /* FAQ */
+        .faq { padding: 80px 0; background: white; }
+        .faq h2 { font-size: 32px; font-weight: 800; text-align: center; margin-bottom: 50px; }
+        .faq-grid { max-width: 800px; margin: 0 auto; display: grid; gap: 30px; }
+        .faq-item h4 { font-size: 18px; font-weight: 700; color: #0f172a; margin-bottom: 10px; }
+        .faq-item p { color: #475569; font-size: 15px; }
+
+        /* Footer */
+        footer { background: #f8fafc; padding: 60px 0 40px; border-top: 1px solid #e2e8f0; }
+        .footer-grid { text-align: center; }
+        .footer-links { display: flex; justify-content: center; gap: 30px; margin-bottom: 30px; }
+        .footer-links a { color: #64748b; text-decoration: none; font-size: 14px; font-weight: 500; }
+        .footer-links a:hover { color: #2563eb; }
+        .copyright { color: #94a3b8; font-size: 13px; margin-top: 20px; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 40px; }
+            .problem-grid, .feature-grid, .pricing-grid, .stats-grid { grid-template-columns: 1fr; }
+            .price-card.popular { transform: none; margin: 20px 0; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">Revenue<span>Back</span></a>
+                <div class="nav-links">
+                    <a href="#problem">Problem</a>
+                    <a href="#advantage">How it Works</a>
+                    <a href="#pricing">Pricing</a>
+                    <a href="#pricing" class="btn" style="padding: 10px 20px; font-size: 14px;">Get Started</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-badge">10x ROI GUARANTEE</div>
+                <h1>Stripe Recovers 35%. <br><span>We Recover 68%.</span></h1>
+                <p>Stop losing $500 - $5,000 every month to "silent churn." RevenueBack plugs the hole in your revenue bucket with human-like recovery emails that your customers actually answer.</p>
+                <a href="#pricing" class="btn">Start Recovering Revenue — 7 Day Free Trial</a>
+                <div class="hero-meta">
+                    <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Setup in 180 seconds</span>
+                    <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> No credit card required</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="social-proof" class="social-proof">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <h4>$2.4M</h4>
+                        <p>Revenue recovered in 2025</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4>68%</h4>
+                        <p>Average recovery rate</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4>180s</h4>
+                        <p>Average setup time</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="problem" class="problem">
+            <div class="container">
+                <div class="problem-grid">
+                    <div class="problem-text">
+                        <span class="section-tag">The Problem</span>
+                        <h2>You're losing 5.8% of your revenue to a "glitch."</h2>
+                        <p>Your customers aren't canceling. They aren't unhappy. But every month, their payments are failing due to expired cards, bank holds, or fraud glitches.</p>
+                        <p><strong>Stripe's built-in "dunning" is the bare minimum.</strong> It sends robotic emails that land in spam and ignore the human element.</p>
+                        <ul class="problem-list">
+                            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg> Expired credit cards</li>
+                            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg> Temporary bank holds</li>
+                            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg> Robotic, ignored emails</li>
+                        </ul>
+                    </div>
+                    <div class="problem-image">
+                        <!-- Placeholder for visual illustration -->
+                        <div style="background: #e2e8f0; border-radius: 24px; padding: 40px; text-align: left; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);">
+                            <div style="font-size: 13px; color: #64748b; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 15px; font-weight: 700;">Sample Case Study</div>
+                            <div style="font-size: 20px; font-weight: 700; color: #0f172a; margin-bottom: 10px;">$20k MRR SaaS</div>
+                            <div style="font-size: 32px; font-weight: 800; color: #ef4444; margin-bottom: 15px;">-$1,100 / month</div>
+                            <div style="font-size: 15px; color: #475569; border-top: 1px solid #cbd5e1; padding-top: 15px;">That's a <strong>$13,000 hole</strong> in your revenue bucket every single year.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="advantage" class="advantage">
+            <div class="container">
+                <span class="section-tag" style="text-align: center;">The Advantage</span>
+                <h2 style="margin-top: 10px;">Higher deliverability. Higher empathy. Higher recovery.</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                        </div>
+                        <h3>The Personal Touch</h3>
+                        <p>We send plain-text, human-like emails from your own domain. They look like a personal reach-out from an account manager, not a billing bot.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                        </div>
+                        <h3>Smart Sequences</h3>
+                        <p>We use data-backed schedules (Day 1, 3, 7, 14) to catch the payment as soon as the bank hold clears or the new card is activated.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><polyline points="17 11 19 13 23 9"></polyline></svg>
+                        </div>
+                        <h3>Zero Engineering</h3>
+                        <p>Click "Connect Stripe." We handle the rest. No API keys, no webhooks, no code changes. You're live before your coffee gets cold.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="pricing" class="pricing">
+            <div class="container">
+                <div class="pricing-header">
+                    <span class="section-tag">Pricing</span>
+                    <h2>Simple. ROI-Focused. No Growth Penalty.</h2>
+                    <p style="color: #64748b; margin-top: 10px;">All plans include our 10X ROI Guarantee.</p>
+                </div>
+                <div class="pricing-grid">
+                    <div class="price-card">
+                        <h3>Starter</h3>
+                        <div class="price-amount">$29<span>/mo</span></div>
+                        <p>Up to $10k Recoverable MRR</p>
+                        <ul class="price-features">
+                            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Smart Sequences</li>
+                            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Plain-text emails</li>
+                            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Dashboard</li>
+                        </ul>
+                        <a href="https://buy.stripe.com/00g5kpeTveAb5sEeeV" class="btn btn-outline">Choose Starter</a>
+                    </div>
+                    <div class="price-card popular">
+                        <div class="popular-badge">Most Popular</div>
+                        <h3>Growth</h3>
+                        <div class="price-amount">$49<span>/mo</span></div>
+                        <p>Up to $50k Recoverable MRR</p>
+                        <ul class="price-features">
+                            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> <strong>Priority Sequencing</strong></li>
+                            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Plain-text emails</li>
+                            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Advanced Analytics</li>
+                        </ul>
+                        <a href="https://buy.stripe.com/dRmeV56j58De2IAgE228800" class="btn">Choose Growth</a>
+                    </div>
+                    <div class="price-card">
+                        <h3>Scale</h3>
+                        <div class="price-amount">$99<span>/mo</span></div>
+                        <p>Unlimited Recoverable MRR</p>
+                        <ul class="price-features">
+                            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> <strong>White-Glove Setup</strong></li>
+                            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Custom Templates</li>
+                            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> API Access</li>
+                        </ul>
+                        <a href="mailto:ezra@anchovylabs.ai" class="btn btn-outline">Contact Sales</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="faq">
+            <div class="container">
+                <h2>Frequently Asked Questions</h2>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <h4>How is this different from Stripe’s recovery?</h4>
+                        <p>Stripe is a payment processor, not a recovery specialist. They send generic emails. We use high-deliverability plain-text sequences and advanced timing that Stripe doesn't offer (based on our study of 340+ merchants).</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>Will this annoy my customers?</h4>
+                        <p>No. Because we send plain-text, helpful messages from your domain, they feel like a supportive account manager checking in, not a collections agency.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>Is it safe?</h4>
+                        <p>Yes. We use Stripe Connect (OAuth). We never see your customers' full card details and we have read-only access to your records.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-links">
+                    <a href="#">RevenueBack</a>
+                    <a href="mailto:ezra@anchovylabs.ai">Support</a>
+                    <a href="#">Privacy</a>
+                </div>
+                <p class="copyright">© 2026 RevenueBack. Built by Anchovy Labs.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
