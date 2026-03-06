@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anchovy Labs — Design Showcase</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0a0a;
+            color: #fafafa;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            letter-spacing: 0.3em;
+            margin-bottom: 0.5rem;
+        }
+        .subtitle {
+            color: #666;
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+        }
+        .updated {
+            color: #444;
+            font-size: 0.75rem;
+            margin-top: 1rem;
+        }
+        .app-section {
+            margin-bottom: 4rem;
+        }
+        .app-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #222;
+        }
+        .app-name {
+            font-size: 1.5rem;
+            font-weight: 500;
+        }
+        .app-status {
+            font-size: 0.75rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 999px;
+            background: #1a3a1a;
+            color: #4ade80;
+        }
+        .app-status.wip {
+            background: #3a3a1a;
+            color: #fbbf24;
+        }
+        .screens {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+        .screen {
+            background: #111;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .screen:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+        }
+        .screen img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .screen-info {
+            padding: 1rem;
+        }
+        .screen-title {
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+        .screen-desc {
+            font-size: 0.7rem;
+            color: #666;
+        }
+        .selected {
+            border: 2px solid #4ade80;
+        }
+        .selected .screen-title::after {
+            content: " ✓";
+            color: #4ade80;
+        }
+        footer {
+            text-align: center;
+            padding: 3rem 0;
+            color: #333;
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>ANCHOVY LABS</h1>
+        <p class="subtitle">iOS App Design Showcase</p>
+        <p class="updated">Last updated: March 6, 2026 • 9:57 AM EST</p>
+    </header>
+
+    <section class="app-section">
+        <div class="app-header">
+            <span class="app-name">OneThing</span>
+            <span class="app-status wip">Zen Redesign</span>
+        </div>
+        <p style="color:#666; margin-bottom:1.5rem; font-size:0.85rem;">
+            "The app that helps you do less, not more." — Minimalist habit tracker with 70% whitespace.
+        </p>
+        <div class="screens">
+            <div class="screen selected">
+                <img src="images/onething/01-zen-serif.png" alt="Zen Serif Home">
+                <div class="screen-info">
+                    <div class="screen-title">Zen Serif Home</div>
+                    <div class="screen-desc">Selected direction — spaced serif, minimal</div>
+                </div>
+            </div>
+            <div class="screen selected">
+                <img src="images/onething/04-zen-serif-completed.png" alt="Completed State">
+                <div class="screen-info">
+                    <div class="screen-title">Completed State</div>
+                    <div class="screen-desc">Filled checkmark, subtle "Complete" text</div>
+                </div>
+            </div>
+            <div class="screen selected">
+                <img src="images/onething/05-setup-screen.png" alt="Setup Tomorrow">
+                <div class="screen-info">
+                    <div class="screen-title">Setup Tomorrow</div>
+                    <div class="screen-desc">Evening intention setting</div>
+                </div>
+            </div>
+            <div class="screen">
+                <img src="images/onething/02-modern-sans.png" alt="Modern Sans Variant">
+                <div class="screen-info">
+                    <div class="screen-title">Modern Sans</div>
+                    <div class="screen-desc">Alternative — not selected</div>
+                </div>
+            </div>
+            <div class="screen">
+                <img src="images/onething/03-glass-minimalist.png" alt="Glass Minimalist Variant">
+                <div class="screen-info">
+                    <div class="screen-title">Glass Minimalist</div>
+                    <div class="screen-desc">Alternative — not selected</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="app-section">
+        <div class="app-header">
+            <span class="app-name">Renap (Snap Converter)</span>
+            <span class="app-status">Built</span>
+        </div>
+        <p style="color:#666; margin-bottom:1.5rem; font-size:0.85rem;">
+            Unit converter with formula reveal. Screenshots pending Stitch generation.
+        </p>
+        <div class="screens">
+            <div class="screen" style="background:#1a1a1a; padding:3rem; text-align:center;">
+                <div style="color:#444; font-size:0.8rem;">No Stitch screens yet</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="app-section">
+        <div class="app-header">
+            <span class="app-name">QRSafe</span>
+            <span class="app-status">Built</span>
+        </div>
+        <p style="color:#666; margin-bottom:1.5rem; font-size:0.85rem;">
+            Stealth QR code generator with brightness-sensitive reveal.
+        </p>
+        <div class="screens">
+            <div class="screen" style="background:#1a1a1a; padding:3rem; text-align:center;">
+                <div style="color:#444; font-size:0.8rem;">No Stitch screens yet</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="app-section">
+        <div class="app-header">
+            <span class="app-name">PromptEngineer</span>
+            <span class="app-status">Built</span>
+        </div>
+        <p style="color:#666; margin-bottom:1.5rem; font-size:0.85rem;">
+            Voice-to-prompt tool with recursive iteration.
+        </p>
+        <div class="screens">
+            <div class="screen" style="background:#1a1a1a; padding:3rem; text-align:center;">
+                <div style="color:#444; font-size:0.8rem;">No Stitch screens yet</div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        ANCHOVY LABS • 2026
+    </footer>
+</body>
+</html>
