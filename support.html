@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Anchovy Labs support resources and FAQ.">
+  <title>Anchovy Labs | Support</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">Anchovy Labs</a>
+      <nav aria-label="Primary navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="apps.html">Apps</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+          <li><a href="support.html">Support</a></li>
+        </ul>
+      </nav>
+      <button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle color theme" aria-pressed="false">Light mode</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero reveal">
+      <h1>Support</h1>
+      <p class="subtitle">Need help with an Anchovy Labs app? Contact us at <a href="mailto:support@anchovylabs.com">support@anchovylabs.com</a>.</p>
+    </section>
+
+    <section id="faq" class="section reveal" aria-labelledby="faq-title">
+      <h2 id="faq-title">FAQ</h2>
+      <div class="grid">
+        <article class="faq-item">
+          <h3>How do I restore purchases?</h3>
+          <p>Open the app settings and tap "Restore Purchases" while signed in with the original Apple ID.</p>
+        </article>
+        <article class="faq-item">
+          <h3>Where can I report a bug?</h3>
+          <p>Email support@anchovylabs.com with steps to reproduce and your iOS version.</p>
+        </article>
+        <article class="faq-item">
+          <h3>Do your apps work offline?</h3>
+          <p>Core app features are available offline; cloud sync features require internet access.</p>
+        </article>
+        <article class="faq-item">
+          <h3>Can I request a feature?</h3>
+          <p>Yes. Send feature requests by email and include your workflow so we can evaluate fit.</p>
+        </article>
+        <article class="faq-item">
+          <h3>How is my data protected?</h3>
+          <p>We minimize data collection, use secure transport, and process privacy requests promptly.</p>
+        </article>
+        <article class="faq-item">
+          <h3>How fast is support response?</h3>
+          <p>We typically reply within 1-2 business days.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section reveal" aria-labelledby="contact-form-title">
+      <h2 id="contact-form-title">Contact Form Placeholder</h2>
+      <p class="subtitle">A web contact form will be available soon. For now, email us directly.</p>
+      <div class="form-placeholder" role="img" aria-label="Contact form placeholder area"></div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <section>
+        <h2>Support Email</h2>
+        <p><a href="mailto:support@anchovylabs.com">support@anchovylabs.com</a></p>
+      </section>
+      <section>
+        <h2>Useful Links</h2>
+        <p><a href="apps.html">App Portfolio</a> · <a href="privacy.html">Privacy Policy</a></p>
+      </section>
+      <section>
+        <h2>Company</h2>
+        <p><a href="about.html">About Anchovy Labs</a></p>
+      </section>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var button = document.getElementById('themeToggle');
+      var saved = localStorage.getItem('theme');
+      if (saved === 'light') {
+        root.classList.add('theme-light');
+        button.textContent = 'Dark mode';
+        button.setAttribute('aria-pressed', 'true');
+      }
+      button.addEventListener('click', function () {
+        var isLight = root.classList.toggle('theme-light');
+        localStorage.setItem('theme', isLight ? 'light' : 'dark');
+        button.textContent = isLight ? 'Dark mode' : 'Light mode';
+        button.setAttribute('aria-pressed', String(isLight));
+      });
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) entry.target.classList.add('in-view');
+        });
+      }, { threshold: 0.15 });
+      document.querySelectorAll('.reveal').forEach(function (el) { observer.observe(el); });
+    }());
+  </script>
+</body>
+</html>

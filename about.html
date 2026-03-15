@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="About Anchovy Labs and our product values.">
+  <title>Anchovy Labs | About</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">Anchovy Labs</a>
+      <nav aria-label="Primary navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="apps.html">Apps</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+          <li><a href="support.html">Support</a></li>
+        </ul>
+      </nav>
+      <button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle color theme" aria-pressed="false">Light mode</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero reveal" aria-labelledby="about-title">
+      <h1 id="about-title">About Anchovy Labs</h1>
+      <p class="subtitle">Anchovy Labs started as a small team building useful software for our own daily work. We kept that same pace and discipline while expanding to public iOS products.</p>
+    </section>
+
+    <section class="section reveal" aria-labelledby="values-title">
+      <h2 id="values-title">Our Values</h2>
+      <div class="grid apps-grid">
+        <article class="card">
+          <h3>Ship Fast</h3>
+          <p>Release meaningful improvements quickly, then iterate from real-world usage.</p>
+        </article>
+        <article class="card">
+          <h3>Stay Useful</h3>
+          <p>Prioritize features that solve clear, everyday problems over unnecessary complexity.</p>
+        </article>
+        <article class="card">
+          <h3>Respect Privacy</h3>
+          <p>Collect minimal data, provide transparent disclosures, and protect user trust by default.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section reveal" aria-labelledby="team-title">
+      <h2 id="team-title">Team</h2>
+      <p class="subtitle">Small cross-functional team spanning iOS, design, and product operations.</p>
+      <div class="team-placeholder" role="img" aria-label="Team profile placeholder"></div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <section>
+        <h2>Contact</h2>
+        <p><a href="mailto:support@anchovylabs.com">support@anchovylabs.com</a></p>
+      </section>
+      <section>
+        <h2>Explore</h2>
+        <p><a href="apps.html">Apps</a> · <a href="privacy.html">Privacy</a> · <a href="support.html">Support</a></p>
+      </section>
+      <section>
+        <h2>Location</h2>
+        <p>Distributed team, shipping globally.</p>
+      </section>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var button = document.getElementById('themeToggle');
+      var saved = localStorage.getItem('theme');
+      if (saved === 'light') {
+        root.classList.add('theme-light');
+        button.textContent = 'Dark mode';
+        button.setAttribute('aria-pressed', 'true');
+      }
+      button.addEventListener('click', function () {
+        var isLight = root.classList.toggle('theme-light');
+        localStorage.setItem('theme', isLight ? 'light' : 'dark');
+        button.textContent = isLight ? 'Dark mode' : 'Light mode';
+        button.setAttribute('aria-pressed', String(isLight));
+      });
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) entry.target.classList.add('in-view');
+        });
+      }, { threshold: 0.15 });
+      document.querySelectorAll('.reveal').forEach(function (el) { observer.observe(el); });
+    }());
+  </script>
+</body>
+</html>

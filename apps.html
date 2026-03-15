@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Anchovy Labs iOS app portfolio featuring QRion, Calmos, Preciq, and VoxIQ.">
+  <title>Anchovy Labs | App Portfolio</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">Anchovy Labs</a>
+      <nav aria-label="Primary navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="apps.html">Apps</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+          <li><a href="support.html">Support</a></li>
+        </ul>
+      </nav>
+      <button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle color theme" aria-pressed="false">Light mode</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero reveal">
+      <h1>App Portfolio</h1>
+      <p class="subtitle">A focused set of iOS apps for scanning, planning, organization, and voice workflows.</p>
+    </section>
+
+    <section class="grid apps-grid reveal" aria-label="Apps list">
+      <article class="card app-card" id="qrion">
+        <div class="icon-placeholder" role="img" aria-label="QRion app icon placeholder"></div>
+        <h2>QRion</h2>
+        <p><strong>Subtitle:</strong> Scan and share, instantly</p>
+        <p>Create, scan, and manage QR workflows with speed-focused tools for operations and support teams.</p>
+        <p><a href="https://apps.apple.com/" target="_blank" rel="noopener noreferrer">View on the App Store</a></p>
+        <div class="screenshot-placeholder" role="img" aria-label="QRion screenshot placeholder"></div>
+      </article>
+
+      <article class="card app-card" id="calmos">
+        <div class="icon-placeholder" role="img" aria-label="Calmos app icon placeholder"></div>
+        <h2>Calmos</h2>
+        <p><strong>Subtitle:</strong> Calm scheduling system</p>
+        <p>Plan your day with lightweight routines and reminders that reduce friction and keep priorities clear.</p>
+        <p><a href="https://apps.apple.com/" target="_blank" rel="noopener noreferrer">View on the App Store</a></p>
+        <div class="screenshot-placeholder" role="img" aria-label="Calmos screenshot placeholder"></div>
+      </article>
+
+      <article class="card app-card" id="preciq">
+        <div class="icon-placeholder" role="img" aria-label="Preciq app icon placeholder"></div>
+        <h2>Preciq</h2>
+        <p><strong>Subtitle:</strong> Precision for projects</p>
+        <p>Track checklists, notes, and milestones in a single place with emphasis on clarity over complexity.</p>
+        <p><a href="https://apps.apple.com/" target="_blank" rel="noopener noreferrer">View on the App Store</a></p>
+        <div class="screenshot-placeholder" role="img" aria-label="Preciq screenshot placeholder"></div>
+      </article>
+
+      <article class="card app-card" id="voxiq">
+        <div class="icon-placeholder" role="img" aria-label="VoxIQ app icon placeholder"></div>
+        <h2>VoxIQ</h2>
+        <p><strong>Subtitle:</strong> Voice to insight</p>
+        <p>Capture spoken ideas and convert them into organized notes with practical tagging and action cues.</p>
+        <p><a href="https://apps.apple.com/" target="_blank" rel="noopener noreferrer">View on the App Store</a></p>
+        <div class="screenshot-placeholder" role="img" aria-label="VoxIQ screenshot placeholder"></div>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <section>
+        <h2>Need help?</h2>
+        <p><a href="support.html">Visit support</a> or email <a href="mailto:support@anchovylabs.com">support@anchovylabs.com</a>.</p>
+      </section>
+      <section>
+        <h2>Company</h2>
+        <p><a href="about.html">About Anchovy Labs</a></p>
+      </section>
+      <section>
+        <h2>Legal</h2>
+        <p><a href="privacy.html">Privacy policy</a></p>
+      </section>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var button = document.getElementById('themeToggle');
+      var saved = localStorage.getItem('theme');
+      if (saved === 'light') {
+        root.classList.add('theme-light');
+        button.textContent = 'Dark mode';
+        button.setAttribute('aria-pressed', 'true');
+      }
+      button.addEventListener('click', function () {
+        var isLight = root.classList.toggle('theme-light');
+        localStorage.setItem('theme', isLight ? 'light' : 'dark');
+        button.textContent = isLight ? 'Dark mode' : 'Light mode';
+        button.setAttribute('aria-pressed', String(isLight));
+      });
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) entry.target.classList.add('in-view');
+        });
+      }, { threshold: 0.15 });
+      document.querySelectorAll('.reveal').forEach(function (el) { observer.observe(el); });
+    }());
+  </script>
+</body>
+</html>
