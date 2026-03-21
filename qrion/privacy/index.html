@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="QRion privacy policy — on-device scanning, local history, and minimal network behavior for link previews.">
+  <link rel="canonical" href="https://anchovylabs.ai/qrion/privacy/">
+  <title>QRion Privacy | Anchovy Labs</title>
+  <link rel="stylesheet" href="../../styles.css">
+  <link rel="stylesheet" href="../qrion.css">
+</head>
+<body class="qrion-page">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../../index.html">Anchovy Labs</a>
+      <nav aria-label="Primary navigation">
+        <ul>
+          <li><a href="../../index.html">Home</a></li>
+          <li><a href="../../apps.html">Apps</a></li>
+          <li><a href="../../about.html">About</a></li>
+          <li><a href="../../privacy.html">Privacy</a></li>
+          <li><a href="../../support.html">Support</a></li>
+        </ul>
+      </nav>
+      <button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle color theme" aria-pressed="false">Light mode</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero reveal">
+      <div class="qrion-hero-top" style="margin-bottom: 1rem;">
+        <img class="qrion-icon" src="../assets/icon.webp" alt="QRion app icon">
+        <div class="qrion-kicker"><span class="qrion-pulse" aria-hidden="true"></span><span>Privacy</span></div>
+      </div>
+      <h1>QRion Privacy Policy</h1>
+      <p class="subtitle"><strong>Last updated:</strong> March 15, 2026</p>
+
+      <div class="qrion-actions" style="margin-top: 1.2rem;">
+        <a class="qrion-button" href="../">Overview</a>
+        <a class="qrion-button" href="../faq/">FAQ</a>
+      </div>
+    </section>
+
+    <section class="section reveal">
+      <div class="qrion-note">
+        <strong>The short version:</strong> QRion is designed for privacy. Scans and safety signals are computed on-device. We do not run analytics, ads, or trackers.
+      </div>
+    </section>
+
+    <section class="section reveal">
+      <h2>What QRion uses</h2>
+      <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
+        <article class="card">
+          <h3>Camera (scanning)</h3>
+          <p>Used only to scan QR codes. Camera frames are processed in real time and are not recorded by QRion.</p>
+        </article>
+        <article class="card">
+          <h3>On-device storage (history)</h3>
+          <p>If you use History, recent scans and verdicts are stored locally on your device for convenience. You can clear history at any time.</p>
+        </article>
+        <article class="card">
+          <h3>Optional network requests</h3>
+          <p>For some URL scans, QRion may request the destination page directly (for example, to fetch a page title / preview). This request goes to the destination website — not to Anchovy Labs.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section reveal">
+      <h2>What we collect</h2>
+      <p class="subtitle">Anchovy Labs does not collect personal data from QRion.</p>
+      <div class="grid">
+        <article class="card">
+          <h3>No accounts</h3>
+          <p>No login, no user profile, no server-side identity.</p>
+        </article>
+        <article class="card">
+          <h3>No analytics</h3>
+          <p>No telemetry SDKs. No usage tracking. No advertising identifiers.</p>
+        </article>
+        <article class="card">
+          <h3>No tracking</h3>
+          <p>We do not share data with advertisers or data brokers.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section reveal">
+      <h2>Important clarification</h2>
+      <p class="subtitle">If you scan a URL, the destination site may receive network traffic from your device.</p>
+      <div class="card">
+        <p>When QRion previews a URL (for example, by fetching a page title) or when you open a link, your device connects to that website. That website may log requests as any website normally would (IP address, user agent, etc.).</p>
+        <p style="margin-bottom: 0;">QRion does not proxy this traffic through Anchovy Labs servers.</p>
+      </div>
+    </section>
+
+    <section class="section reveal">
+      <h2>Contact</h2>
+      <p class="subtitle">Questions? Email <a href="mailto:support@anchovylabs.ai">support@anchovylabs.ai</a>.</p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <section>
+        <h2>QRion</h2>
+        <p>See where links lead first.</p>
+        <div class="qrion-footer-links">
+          <a href="../">Overview</a>
+          <a href="../faq/">FAQ</a>
+          <a href="./">Privacy</a>
+        </div>
+      </section>
+      <section>
+        <h2>Legal</h2>
+        <p><a href="../../privacy.html">Company privacy</a></p>
+      </section>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var button = document.getElementById('themeToggle');
+      var saved = localStorage.getItem('theme');
+      if (saved === 'light') {
+        root.classList.add('theme-light');
+        button.textContent = 'Dark mode';
+        button.setAttribute('aria-pressed', 'true');
+      }
+      button.addEventListener('click', function () {
+        var isLight = root.classList.toggle('theme-light');
+        localStorage.setItem('theme', isLight ? 'light' : 'dark');
+        button.textContent = isLight ? 'Dark mode' : 'Light mode';
+        button.setAttribute('aria-pressed', String(isLight));
+      });
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) entry.target.classList.add('in-view');
+        });
+      }, { threshold: 0.15 });
+      document.querySelectorAll('.reveal').forEach(function (el) { observer.observe(el); });
+    }());
+  </script>
+</body>
+</html>

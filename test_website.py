@@ -88,8 +88,12 @@ def test_internal_links_reference_existing_files():
             if href.startswith(("http://", "https://", "mailto:", "tel:", "#")):
                 continue
             target = href.split("#", 1)[0].split("?", 1)[0]
-            assert target in ALL_FILES, f"{file_name} has unknown internal link: {href}"
-            assert (BASE_DIR / target).exists(), f"{file_name} links to missing file: {target}"
+            # Root pages must link to known root files, but allow links into subfolders
+            # (e.g. /qrion/ landing pages).
+            if target in ALL_FILES:
+                assert (BASE_DIR / target).exists(), f"{file_name} links to missing file: {target}"
+            else:
+                assert (BASE_DIR / target).exists(), f"{file_name} has unknown internal link: {href}"
 
 
 def test_all_pages_include_shared_stylesheet():

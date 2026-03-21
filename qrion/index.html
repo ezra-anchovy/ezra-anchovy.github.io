@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="QRion helps you see where a QR code leads before you open it. Inspect the destination, get a safety verdict, then tap with more confidence.">
+  <meta name="theme-color" content="#0a0a0b">
+
+  <meta property="og:title" content="QRion — See where links lead first">
+  <meta property="og:description" content="Scan a QR code, inspect the destination, review a safety verdict, then decide. Built for inspection before action.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://anchovylabs.ai/qrion/">
+
+  <link rel="canonical" href="https://anchovylabs.ai/qrion/">
+  <title>QRion | Anchovy Labs</title>
+
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="qrion.css">
+</head>
+<body class="qrion-page">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../index.html">Anchovy Labs</a>
+      <nav aria-label="Primary navigation">
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../apps.html">Apps</a></li>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../privacy.html">Privacy</a></li>
+          <li><a href="../support.html">Support</a></li>
+        </ul>
+      </nav>
+      <button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle color theme" aria-pressed="false">Light mode</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="qrion-hero reveal">
+      <div class="qrion-hero-top">
+        <img class="qrion-icon" src="assets/icon.webp" alt="QRion app icon">
+        <div class="qrion-kicker"><span class="qrion-pulse" aria-hidden="true"></span><span>QR safety, designed for inspection</span></div>
+      </div>
+
+      <div>
+        <h1 class="qrion-title">QRion</h1>
+        <p class="qrion-subtitle"><strong>See where links lead first.</strong> Scan a QR code, inspect the destination, review a safety verdict, then decide with more context instead of tapping blind.</p>
+      </div>
+
+      <div class="qrion-actions" aria-label="Primary actions">
+        <a class="qrion-button primary" href="https://apps.apple.com/app/id6760600108" target="_blank" rel="noopener noreferrer">
+          <span aria-hidden="true"></span>
+          <span>View on the App Store</span>
+        </a>
+        <a class="qrion-button" href="faq/">FAQ</a>
+        <a class="qrion-button" href="privacy/">Privacy</a>
+      </div>
+
+      <div class="qrion-signal-grid" aria-label="What QRion checks">
+        <article class="qrion-signal">
+          <div class="tag"><span class="qrion-dot safe" aria-hidden="true"></span>Verdict</div>
+          <h3>Safe · Caution · Blocked</h3>
+          <p>Clear states that help you slow down for one second — the second that prevents a surprising amount of trouble.</p>
+        </article>
+        <article class="qrion-signal">
+          <div class="tag"><span class="qrion-dot warn" aria-hidden="true"></span>Inspection</div>
+          <h3>Link preview before you open</h3>
+          <p>See the destination and the domain in a readable card, not a tiny toast that disappears.</p>
+        </article>
+        <article class="qrion-signal">
+          <div class="tag"><span class="qrion-dot blocked" aria-hidden="true"></span>Guardrails</div>
+          <h3>Confirmation step by design</h3>
+          <p>QRion is built around inspection before action — including an explicit confirm-open moment.</p>
+        </article>
+      </div>
+
+      <div class="qrion-note">
+        <strong>Important:</strong> QRion is not a guarantee that every destination is safe. It provides on-device signals (blocklist checks, URL shortener detection, domain/path heuristics) so you can make a better decision.
+      </div>
+    </section>
+
+    <section class="section reveal">
+      <h2>Why use this instead of the iPhone camera?</h2>
+      <p class="subtitle">Because the camera helps you open a QR code. QRion helps you inspect it first.</p>
+    </section>
+
+    <section class="section qrion-screens reveal" aria-label="Screenshots">
+      <h2>Screens that match the promise</h2>
+      <p class="subtitle">The App Store set is built around a simple narrative: preview → caution → blocked → history → confirm.</p>
+
+      <div class="qrion-gallery">
+        <article class="qrion-shot">
+          <figure>
+            <img src="assets/screenshots/01.webp" alt="QRion screenshot: See the link first">
+            <figcaption><strong>See the link first</strong> — Safe result with destination visible before you tap.</figcaption>
+          </figure>
+        </article>
+
+        <article class="qrion-shot">
+          <figure>
+            <img src="assets/screenshots/02.webp" alt="QRion screenshot: Don't open blind">
+            <figcaption><strong>Don’t open blind</strong> — Caution state with shortener warning and breakdown.</figcaption>
+          </figure>
+        </article>
+
+        <article class="qrion-shot">
+          <figure>
+            <img src="assets/screenshots/03.webp" alt="QRion screenshot: Know what looks wrong">
+            <figcaption><strong>Know what looks wrong</strong> — Blocked verdict when patterns match phishing destinations.</figcaption>
+          </figure>
+        </article>
+
+        <article class="qrion-shot">
+          <figure>
+            <img src="assets/screenshots/04.webp" alt="QRion screenshot: Review recent verdicts">
+            <figcaption><strong>Review recent verdicts</strong> — History turns “that felt sketchy” into a safety log.</figcaption>
+          </figure>
+        </article>
+
+        <article class="qrion-shot">
+          <figure>
+            <img src="assets/screenshots/05.webp" alt="QRion screenshot: Safer than tap-and-hope">
+            <figcaption><strong>Safer than tap-and-hope</strong> — Confirmation step before opening any destination.</figcaption>
+          </figure>
+        </article>
+      </div>
+    </section>
+
+    <section class="section reveal">
+      <h2>Built for real life</h2>
+      <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
+        <article class="card">
+          <h3>Menus & flyers</h3>
+          <p>Quick scan, clear destination, then decide — without tiny transient UI.</p>
+        </article>
+        <article class="card">
+          <h3>Parking meters</h3>
+          <p>See the domain before you pay. The risky stuff often looks “normal” at a glance.</p>
+        </article>
+        <article class="card">
+          <h3>Packages & posters</h3>
+          <p>Older relatives, kids, and tired brains deserve guardrails that slow the tap down.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section reveal">
+      <h2>Need help?</h2>
+      <p class="subtitle">Visit the <a href="faq/">FAQ</a> or email <a href="mailto:support@anchovylabs.ai">support@anchovylabs.ai</a>.</p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <section>
+        <h2>QRion</h2>
+        <p>Scan. Inspect. Decide.</p>
+        <div class="qrion-footer-links">
+          <a href="./">Overview</a>
+          <a href="faq/">FAQ</a>
+          <a href="privacy/">Privacy</a>
+        </div>
+      </section>
+      <section>
+        <h2>Company</h2>
+        <p><a href="../about.html">About Anchovy Labs</a></p>
+        <p><a href="../apps.html">App portfolio</a></p>
+      </section>
+      <section>
+        <h2>Contact</h2>
+        <p><a href="mailto:support@anchovylabs.ai">support@anchovylabs.ai</a></p>
+      </section>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var button = document.getElementById('themeToggle');
+      var saved = localStorage.getItem('theme');
+      if (saved === 'light') {
+        root.classList.add('theme-light');
+        button.textContent = 'Dark mode';
+        button.setAttribute('aria-pressed', 'true');
+      }
+      button.addEventListener('click', function () {
+        var isLight = root.classList.toggle('theme-light');
+        localStorage.setItem('theme', isLight ? 'light' : 'dark');
+        button.textContent = isLight ? 'Dark mode' : 'Light mode';
+        button.setAttribute('aria-pressed', String(isLight));
+      });
+
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) entry.target.classList.add('in-view');
+        });
+      }, { threshold: 0.15 });
+      document.querySelectorAll('.reveal').forEach(function (el) { observer.observe(el); });
+    }());
+  </script>
+</body>
+</html>
