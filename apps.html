@@ -3,7 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Anchovy Labs iOS app portfolio featuring QRion, Calmos, Preciq, and VoxIQ.">
+  <meta name="description" content="Anchovy Labs app portfolio with launch status, pricing, and product focus for QRion, Preciq, Calmos, and VoxIQ.">
+  <meta property="og:title" content="Anchovy Labs App Portfolio">
+  <meta property="og:description" content="Focused iOS products built by Anchovy Labs with clear status and release stage.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://anchovylabs.ai/apps.html">
+  <meta property="og:image" content="https://anchovylabs.ai/qrion/assets/icon-1024.png">
   <title>Anchovy Labs | App Portfolio</title>
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -27,47 +32,59 @@
   <main class="container">
     <section class="hero reveal">
       <h1>App Portfolio</h1>
-      <p class="subtitle">A focused set of iOS apps for scanning, planning, organization, and voice workflows.</p>
+      <p class="subtitle">A focused suite of iOS products for security-aware scanning, structured planning, routine execution, and voice-first capture.</p>
     </section>
 
     <section class="grid apps-grid reveal" aria-label="Apps list">
       <article class="card app-card" id="qrion">
-        <img src="qrion/assets/icon.webp" alt="QRion app icon" style="width:56px; height:56px; border-radius:14px; border:1px solid var(--border); box-shadow: var(--shadow);">
+        <img src="qrion/assets/icon.webp" alt="QRion app icon" class="app-icon" width="56" height="56">
+        <p class="status-badge status-live">Live</p>
         <h2>QRion</h2>
-        <p><strong>Subtitle:</strong> See where links lead first</p>
-        <p>Scan a QR code, inspect the destination, review a safety verdict, then decide with more context instead of tapping blind.</p>
+        <p><strong>Value:</strong> Check QR destinations before you open them.</p>
+        <p>Scan a code, inspect the destination, and review a safety verdict before opening unknown links.</p>
+        <p><strong>Pricing:</strong> Free download with premium features.</p>
         <p>
           <a href="qrion/">Learn more</a>
           ·
           <a href="https://apps.apple.com/app/id6760600108" target="_blank" rel="noopener noreferrer">View on the App Store</a>
         </p>
-        <img src="qrion/assets/screenshots/01.webp" alt="QRion screenshot showing a safe link preview" style="width:100%; height:auto; border-radius:16px; border:1px solid var(--border);">
-      </article>
-
-      <article class="card app-card" id="calmos">
-        <div class="icon-placeholder" role="img" aria-label="Calmos app icon placeholder"></div>
-        <h2>Calmos</h2>
-        <p><strong>Subtitle:</strong> Calm scheduling system</p>
-        <p>Plan your day with lightweight routines and reminders that reduce friction and keep priorities clear.</p>
-        <p><a href="https://apps.apple.com/" target="_blank" rel="noopener noreferrer">View on the App Store</a></p>
-        <div class="screenshot-placeholder" role="img" aria-label="Calmos screenshot placeholder"></div>
+        <a class="app-store-badge" href="https://apps.apple.com/app/id6760600108" target="_blank" rel="noopener noreferrer">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          <span>On the App Store</span>
+        </a>
+        <img src="qrion/assets/screenshots/01.webp" alt="QRion screenshot showing safe link preview" class="app-shot">
       </article>
 
       <article class="card app-card" id="preciq">
         <div class="icon-placeholder" role="img" aria-label="Preciq app icon placeholder"></div>
+        <p class="status-badge status-review">In Review</p>
         <h2>Preciq</h2>
-        <p><strong>Subtitle:</strong> Precision for projects</p>
-        <p>Track checklists, notes, and milestones in a single place with emphasis on clarity over complexity.</p>
-        <p><a href="https://apps.apple.com/" target="_blank" rel="noopener noreferrer">View on the App Store</a></p>
+        <p><strong>Value:</strong> Keep notes, tasks, and execution context in one stream.</p>
+        <p>Built for operators who need precision planning without heavyweight project tooling.</p>
+        <p><strong>Pricing:</strong> Planned free tier with Pro subscription.</p>
+        <p>App Store listing pending review.</p>
         <div class="screenshot-placeholder" role="img" aria-label="Preciq screenshot placeholder"></div>
+      </article>
+
+      <article class="card app-card" id="calmos">
+        <div class="icon-placeholder" role="img" aria-label="Calmos app icon placeholder"></div>
+        <p class="status-badge status-dev">In Development</p>
+        <h2>Calmos</h2>
+        <p><strong>Value:</strong> Build stable routines with less scheduling overhead.</p>
+        <p>A calm planner for recurring priorities, habit loops, and low-friction daily execution.</p>
+        <p><strong>Pricing:</strong> Final pricing to be announced at launch.</p>
+        <p>Public beta planned.</p>
+        <div class="screenshot-placeholder" role="img" aria-label="Calmos screenshot placeholder"></div>
       </article>
 
       <article class="card app-card" id="voxiq">
         <div class="icon-placeholder" role="img" aria-label="VoxIQ app icon placeholder"></div>
+        <p class="status-badge status-dev">In Development</p>
         <h2>VoxIQ</h2>
-        <p><strong>Subtitle:</strong> Voice to insight</p>
-        <p>Capture spoken ideas and convert them into organized notes with practical tagging and action cues.</p>
-        <p><a href="https://apps.apple.com/" target="_blank" rel="noopener noreferrer">View on the App Store</a></p>
+        <p><strong>Value:</strong> Turn spoken thoughts into organized action items.</p>
+        <p>Voice capture and summarization workflows built for real-time teams and field operators.</p>
+        <p><strong>Pricing:</strong> Final pricing to be announced at launch.</p>
+        <p>Early access waitlist opening soon.</p>
         <div class="screenshot-placeholder" role="img" aria-label="VoxIQ screenshot placeholder"></div>
       </article>
     </section>
@@ -85,8 +102,11 @@
       </section>
       <section>
         <h2>Legal</h2>
-        <p><a href="privacy.html">Privacy policy</a></p>
+        <p><a href="privacy.html">Privacy Policy</a></p>
       </section>
+    </div>
+    <div class="container footer-note">
+      <p>© 2026 Anchovy Labs LLC · New York, NY</p>
     </div>
   </footer>
 
