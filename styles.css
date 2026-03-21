@@ -1,23 +1,23 @@
 :root {
-  --bg: #0a0a0b;
-  --surface: #141416;
-  --surface-elevated: #1b1b1f;
-  --text: #f4f5f7;
-  --muted: #b1b5bd;
-  --accent: #5bd0ff;
-  --border: #2a2b30;
-  --shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+  --bg: #f9f7f2;
+  --surface: #ffffff;
+  --surface-elevated: #f4f2ed;
+  --text: #1a2433;
+  --muted: #5d697a;
+  --accent: #1f7fb3;
+  --border: #d6dee8;
+  --shadow: 0 12px 28px rgba(16, 34, 60, 0.08);
 }
 
 :root.theme-light {
-  --bg: #f6f7fb;
+  --bg: #f9f7f2;
   --surface: #ffffff;
-  --surface-elevated: #f2f4f8;
-  --text: #121316;
-  --muted: #545b66;
-  --accent: #0057d9;
-  --border: #d8dee8;
-  --shadow: 0 14px 28px rgba(8, 20, 40, 0.12);
+  --surface-elevated: #f4f2ed;
+  --text: #1a2433;
+  --muted: #5d697a;
+  --accent: #1f7fb3;
+  --border: #d6dee8;
+  --shadow: 0 12px 28px rgba(16, 34, 60, 0.08);
 }
 
 * {
@@ -34,7 +34,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   background:
     radial-gradient(circle at 12% 0%, rgba(91, 208, 255, 0.12), transparent 38%),
-    radial-gradient(circle at 90% 6%, rgba(0, 87, 217, 0.1), transparent 40%),
+    radial-gradient(circle at 92% 8%, rgba(23, 93, 146, 0.10), transparent 42%),
     var(--bg);
   color: var(--text);
   line-height: 1.6;
@@ -60,8 +60,8 @@ a:focus-visible {
   position: sticky;
   top: 0;
   z-index: 20;
-  backdrop-filter: blur(14px);
-  background: color-mix(in srgb, var(--bg) 78%, transparent);
+  backdrop-filter: blur(10px);
+  background: color-mix(in srgb, var(--bg) 88%, #fff);
   border-bottom: 1px solid var(--border);
 }
 
@@ -97,16 +97,6 @@ nav a {
   border-radius: 999px;
   padding: 0.4rem 0.8rem;
   font-size: 0.9rem;
-}
-
-.theme-toggle {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  color: var(--text);
-  border-radius: 999px;
-  padding: 0.45rem 0.8rem;
-  font-size: 0.85rem;
-  cursor: pointer;
 }
 
 main {
@@ -157,6 +147,7 @@ h1 {
   margin: 0;
   font-weight: 700;
   letter-spacing: 0.01em;
+  color: var(--text);
 }
 
 .metric-label {
@@ -193,34 +184,21 @@ h1 {
   border-radius: 999px;
   border: 1px solid var(--border);
   background: var(--surface);
-  color: var(--text);
 }
 
 .status-live {
-  border-color: color-mix(in srgb, #5de09f 40%, var(--border));
-  color: #9ff1c8;
+  border-color: #89d6b2;
+  color: #1e6a46;
 }
 
 .status-review {
-  border-color: color-mix(in srgb, #ffc871 42%, var(--border));
-  color: #ffdca6;
+  border-color: #e8cf9d;
+  color: #855b1a;
 }
 
 .status-dev {
-  border-color: color-mix(in srgb, var(--accent) 38%, var(--border));
-  color: color-mix(in srgb, var(--accent) 88%, #e7f7ff);
-}
-
-:root.theme-light .status-live {
-  color: #16653d;
-}
-
-:root.theme-light .status-review {
-  color: #8a5c14;
-}
-
-:root.theme-light .status-dev {
-  color: #124a90;
+  border-color: #9ccce5;
+  color: #14527a;
 }
 
 .app-store-badge {
@@ -284,6 +262,7 @@ h1 {
   object-fit: cover;
   border-radius: 16px;
   border: 1px solid var(--border);
+  background: #fff;
 }
 
 .role {
@@ -298,7 +277,7 @@ h1 {
 .team-placeholder,
 .form-placeholder {
   border: 1px dashed var(--border);
-  background: color-mix(in srgb, var(--surface-elevated) 80%, transparent);
+  background: color-mix(in srgb, var(--surface-elevated) 88%, white);
   border-radius: 12px;
 }
 
