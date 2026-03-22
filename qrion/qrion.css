@@ -1,12 +1,24 @@
+/* ===================================================================
+   QRion subsite — extends ../styles.css
+   =================================================================== */
+
+/* --- QRion color tokens ------------------------------------------ */
 :root {
   --qrion-accent: #5bd0ff;
   --qrion-safe: #2fa96f;
   --qrion-warn: #d29a2e;
   --qrion-blocked: #c5465b;
-  --qrion-ink: rgba(26, 36, 51, 0.72);
 }
 
+/* --- Map generic tokens to the main design system ---------------- */
 .qrion-page {
+  --bg: var(--cream-1);
+  --border: var(--line-subtle);
+  --surface: var(--cream-0);
+  --surface-elevated: var(--cream-1);
+  --text: var(--ink-0);
+  --muted: var(--ink-2);
+  --shadow: var(--shadow-sm);
   background:
     radial-gradient(circle at 18% 4%, rgba(52, 211, 153, 0.12), transparent 46%),
     radial-gradient(circle at 82% 6%, rgba(91, 208, 255, 0.12), transparent 42%),
@@ -14,6 +26,190 @@
     var(--bg);
 }
 
+/* --- Layout: container ------------------------------------------- */
+.qrion-page .container {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 0 var(--page-gutter-min);
+}
+
+@media (min-width: 600px) {
+  .qrion-page .container {
+    padding-left: var(--page-gutter);
+    padding-right: var(--page-gutter);
+  }
+}
+
+.qrion-page main.container {
+  padding-top: var(--space-2xl);
+  padding-bottom: var(--space-3xl);
+}
+
+/* --- Layout: header ---------------------------------------------- */
+.qrion-page .site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  backdrop-filter: blur(12px) saturate(1.2);
+  -webkit-backdrop-filter: blur(12px) saturate(1.2);
+  background: rgba(245, 240, 232, 0.92);
+  border-bottom: 1px solid rgba(212, 205, 195, 0.5);
+}
+
+.qrion-page .header-inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-top: 0.88rem;
+  padding-bottom: 0.88rem;
+  gap: var(--space-xs) var(--space-md);
+}
+
+.qrion-page .header-inner nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.9rem;
+}
+
+.qrion-page .header-inner nav a {
+  color: var(--ink-2);
+  text-decoration: none;
+  font-size: var(--step-sm);
+  padding-bottom: 0.14rem;
+  border-bottom: 1px solid transparent;
+  transition:
+    color var(--duration-fast) var(--ease-out-quart),
+    border-color var(--duration-fast) var(--ease-out-quart);
+}
+
+.qrion-page .header-inner nav a:hover {
+  color: var(--ink-0);
+  border-color: var(--line);
+}
+
+/* --- Generic blocks: .grid, .card, .subtitle --------------------- */
+.qrion-page .grid {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.qrion-page .card {
+  padding: var(--space-md);
+  background: var(--cream-0);
+  border: 1px solid var(--line-subtle);
+  border-radius: 8px;
+}
+
+.qrion-page .card h3 {
+  font-family: var(--font-body);
+  font-size: var(--step-sm);
+  font-weight: 700;
+  margin-bottom: var(--space-2xs);
+}
+
+.qrion-page .card p {
+  margin: 0;
+  color: var(--ink-1);
+  font-size: var(--step-sm);
+  line-height: 1.55;
+}
+
+.qrion-page .card p + p {
+  margin-top: var(--space-2xs);
+}
+
+.qrion-page .subtitle {
+  margin-top: var(--space-sm);
+  color: var(--ink-1);
+  max-width: 58ch;
+}
+
+/* --- Layout: footer ---------------------------------------------- */
+.qrion-page footer {
+  border-top: 1px solid var(--line);
+  padding: var(--space-xl) 0 var(--space-lg);
+  margin-top: var(--space-2xl);
+  background: var(--cream-2);
+}
+
+.qrion-page .footer-grid {
+  display: grid;
+  gap: var(--space-md) var(--space-xl);
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.qrion-page footer h2 {
+  font-family: var(--font-body);
+  font-size: var(--step-xs);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  margin-bottom: var(--space-2xs);
+}
+
+.qrion-page footer p {
+  margin: 0;
+  color: var(--ink-1);
+  font-size: var(--step-sm);
+}
+
+.qrion-page footer a {
+  color: var(--ink-1);
+}
+
+.qrion-page footer a:hover {
+  color: var(--accent);
+}
+
+/* --- FAQ details/summary ----------------------------------------- */
+.qrion-page details.faq-item {
+  padding: var(--space-md);
+  border: 1px solid var(--line-subtle);
+  border-radius: 8px;
+  background: var(--cream-0);
+}
+
+.qrion-page details.faq-item summary {
+  cursor: pointer;
+  list-style: none;
+  font-size: var(--step-base);
+}
+
+.qrion-page details.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.qrion-page details.faq-item summary::marker {
+  content: "";
+}
+
+.qrion-page details.faq-item p {
+  margin: var(--space-2xs) 0 0;
+  color: var(--ink-1);
+  font-size: var(--step-sm);
+  line-height: 1.55;
+}
+
+/* --- Reveal animation -------------------------------------------- */
+.qrion-page .reveal {
+  opacity: 0;
+  transform: translate3d(0, 24px, 0);
+  transition:
+    opacity 600ms var(--ease-out-expo),
+    transform 600ms var(--ease-out-expo);
+}
+
+.qrion-page .reveal.in-view {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+/* --- QRion Hero -------------------------------------------------- */
 .qrion-hero {
   display: grid;
   gap: 1.4rem;
@@ -31,7 +227,7 @@
   width: 64px;
   height: 64px;
   border-radius: 18px;
-  border: 1px solid color-mix(in srgb, var(--border) 84%, transparent);
+  border: 1px solid var(--border);
   box-shadow: 0 10px 24px rgba(14, 37, 66, 0.12);
 }
 
@@ -42,7 +238,7 @@
   padding: 0.45rem 0.85rem;
   border-radius: 999px;
   border: 1px solid var(--border);
-  background: color-mix(in srgb, var(--surface) 92%, transparent);
+  background: var(--surface);
   color: var(--muted);
   font-size: 0.88rem;
 }
@@ -68,6 +264,7 @@
   font-size: 1.06rem;
 }
 
+/* --- QRion Actions ----------------------------------------------- */
 .qrion-actions {
   display: flex;
   flex-wrap: wrap;
@@ -83,18 +280,19 @@
   border-radius: 999px;
   padding: 0.65rem 1.05rem;
   border: 1px solid var(--border);
-  background: linear-gradient(180deg, var(--surface), var(--surface-elevated));
+  background: var(--surface);
   color: var(--text);
   font-weight: 650;
   letter-spacing: 0.01em;
   box-shadow: var(--shadow);
+  transition: transform var(--duration-fast) var(--ease-out-quart);
 }
 
 .qrion-button.primary {
-  border-color: color-mix(in srgb, var(--qrion-accent) 52%, var(--border));
+  border-color: rgba(91, 208, 255, 0.4);
   background:
     radial-gradient(circle at 12% 10%, rgba(91, 208, 255, 0.18), transparent 56%),
-    linear-gradient(180deg, var(--surface), var(--surface-elevated));
+    var(--surface);
 }
 
 .qrion-button:hover {
@@ -106,6 +304,7 @@
   transform: translateY(0);
 }
 
+/* --- QRion Signal Grid ------------------------------------------- */
 .qrion-signal-grid {
   display: grid;
   gap: 1rem;
@@ -116,7 +315,7 @@
 .qrion-signal {
   border-radius: 18px;
   border: 1px solid var(--border);
-  background: linear-gradient(180deg, var(--surface), var(--surface-elevated));
+  background: var(--surface);
   padding: 1rem;
   box-shadow: 0 10px 24px rgba(14, 37, 66, 0.08);
 }
@@ -151,6 +350,7 @@
 .qrion-dot.warn { background: var(--qrion-warn); }
 .qrion-dot.blocked { background: var(--qrion-blocked); }
 
+/* --- QRion Screenshots ------------------------------------------- */
 .qrion-screens {
   margin-top: 1.6rem;
 }
@@ -164,7 +364,7 @@
 .qrion-shot {
   border-radius: 20px;
   border: 1px solid var(--border);
-  background: linear-gradient(180deg, var(--surface), var(--surface-elevated));
+  background: var(--surface);
   padding: 0.85rem;
   box-shadow: 0 10px 22px rgba(14, 37, 66, 0.08);
 }
@@ -190,11 +390,12 @@
   color: var(--text);
 }
 
+/* --- QRion Note -------------------------------------------------- */
 .qrion-note {
   margin-top: 1.2rem;
   border-radius: 16px;
   border: 1px solid var(--border);
-  background: color-mix(in srgb, var(--surface) 96%, transparent);
+  background: var(--surface);
   padding: 1rem;
   color: var(--muted);
 }
@@ -203,6 +404,7 @@
   color: var(--text);
 }
 
+/* --- QRion Footer Links ------------------------------------------ */
 .qrion-footer-links {
   display: flex;
   flex-wrap: wrap;
@@ -220,5 +422,13 @@
 
 .qrion-footer-links a:hover {
   text-decoration: none;
-  border-color: color-mix(in srgb, var(--qrion-accent) 45%, var(--border));
+  border-color: rgba(91, 208, 255, 0.4);
+}
+
+/* --- Reduced motion ---------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .qrion-page .reveal {
+    opacity: 1;
+    transform: none;
+  }
 }

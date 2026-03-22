@@ -544,17 +544,9 @@ h3 {
   grid-template-columns: repeat(2, 1fr);
 }
 
-/* 5 items in 2-col grid: last item spans full width */
-.infra-brief .infra-block:last-child {
-  grid-column: 1 / -1;
-}
-
 @media (max-width: 700px) {
   .infra-brief {
     grid-template-columns: 1fr;
-  }
-  .infra-brief .infra-block:last-child {
-    grid-column: auto;
   }
 }
 
@@ -590,19 +582,6 @@ h3 {
 }
 
 /* --- App Portfolio (apps.html) ------------------------------------ */
-.apps-grid {
-  margin-top: var(--space-xl);
-  display: grid;
-  gap: var(--space-md);
-  grid-template-columns: repeat(2, 1fr);
-}
-
-@media (max-width: 700px) {
-  .apps-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
 .app-entry {
   display: grid;
   gap: var(--space-sm);
@@ -621,7 +600,6 @@ h3 {
   transform: translateY(-2px);
 }
 
-/* Legacy list layout fallback */
 .apps-list {
   margin-top: var(--space-xl);
   display: grid;
@@ -633,10 +611,6 @@ h3 {
   .apps-list {
     grid-template-columns: 1fr;
   }
-}
-
-.apps-list .app-entry {
-  grid-template-columns: 1fr;
 }
 
 .app-entry-header {
@@ -665,9 +639,9 @@ h3 {
   gap: var(--space-xs);
 }
 
-.app-copy h2 {
+.app-title-group h2 {
   font-family: var(--font-display);
-  font-size: clamp(1.5rem, 1.32rem + 0.8vw, 2rem);
+  font-size: var(--step-xl);
   font-weight: 480;
 }
 
@@ -701,16 +675,6 @@ h3 {
   border-color: var(--accent);
   color: var(--accent);
   background: var(--accent-soft);
-}
-
-/* --- Info Rail (sidebar-style callout) ----------------------------- */
-.info-rail {
-  margin-top: var(--space-xl);
-  border-left: 2px solid var(--line);
-  padding-left: var(--space-md);
-  color: var(--ink-1);
-  font-size: var(--step-sm);
-  max-width: 52ch;
 }
 
 /* --- Team (about.html) -------------------------------------------- */
@@ -799,20 +763,6 @@ h3 {
 .faq-item p {
   margin: 0;
   color: var(--ink-1);
-  font-size: var(--step-sm);
-}
-
-/* Form placeholder */
-.form-placeholder {
-  margin-top: var(--space-md);
-  min-height: 200px;
-  border: 1px dashed var(--line);
-  border-radius: 8px;
-  background: var(--cream-0);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--ink-2);
   font-size: var(--step-sm);
 }
 
