@@ -175,12 +175,15 @@ h1 {
 .status-badge {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   width: fit-content;
   margin-bottom: 0.55rem;
-  padding: 0.22rem 0.62rem;
+  padding: 0.24rem 0.68rem;
   font-size: 0.74rem;
+  line-height: 1;
   font-weight: 650;
   letter-spacing: 0.01em;
+  white-space: nowrap;
   border-radius: 999px;
   border: 1px solid var(--border);
   background: var(--surface);
@@ -269,8 +272,8 @@ h1 {
 }
 
 .app-live-featured {
-  border-color: color-mix(in srgb, var(--accent) 55%, var(--border));
-  box-shadow: 0 0 0 1px color-mix(in srgb, var(--accent) 26%, transparent), var(--shadow);
+  border: 1px solid var(--accent);
+  box-shadow: 0 0 12px rgba(91, 208, 255, 0.15), var(--shadow);
 }
 
 .app-card h2,
