@@ -532,34 +532,55 @@ h3 {
   flex-shrink: 0;
 }
 
-/* --- How We Build Section ----------------------------------------- */
-.build-principles {
-  margin-top: var(--space-lg);
-  display: grid;
-  gap: var(--space-md);
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-}
-
-.build-principle {
-  padding: var(--space-md);
-  border-left: 2px solid var(--accent);
-  background: var(--cream-0);
-  border-radius: 0 6px 6px 0;
-}
-
-.build-principle h3 {
-  font-family: var(--font-body);
-  font-size: var(--step-base);
-  font-weight: 600;
+/* --- Infrastructure Pillar ---------------------------------------- */
+.infra-pillar .hero-kicker {
   margin-bottom: var(--space-2xs);
-  color: var(--ink-0);
 }
 
-.build-principle p {
+.infra-brief {
+  margin-top: var(--space-xl);
+  display: grid;
+  gap: 1px;
+  grid-template-columns: repeat(2, 1fr);
+  background: var(--line-subtle);
+  border: 1px solid var(--line-subtle);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+@media (max-width: 700px) {
+  .infra-brief {
+    grid-template-columns: 1fr;
+  }
+}
+
+.infra-block {
+  padding: var(--space-md) var(--space-md) var(--space-lg);
+  background: var(--cream-0);
+}
+
+.infra-block h3 {
+  font-family: var(--font-body);
+  font-size: var(--step-sm);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: var(--ink-0);
+  margin-bottom: var(--space-2xs);
+}
+
+.infra-block p {
   margin: 0;
   color: var(--ink-1);
   font-size: var(--step-sm);
-  line-height: 1.5;
+  line-height: 1.55;
+}
+
+.infra-coda {
+  margin-top: var(--space-lg);
+  color: var(--ink-2);
+  font-size: var(--step-sm);
+  font-style: italic;
+  max-width: 60ch;
 }
 
 /* --- App Portfolio (apps.html) ------------------------------------ */
