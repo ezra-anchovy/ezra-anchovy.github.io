@@ -305,6 +305,20 @@ h3 {
   border-bottom: 1px solid var(--line-subtle);
 }
 
+.hero h1 {
+  position: relative;
+}
+
+.hero h1::after {
+  content: "";
+  display: block;
+  width: 3.5rem;
+  height: 3px;
+  background: var(--accent);
+  border-radius: 2px;
+  margin-top: var(--space-sm);
+}
+
 .hero-kicker {
   display: block;
   color: var(--accent);
@@ -677,7 +691,13 @@ h3 {
   margin-top: var(--space-xl);
   display: grid;
   gap: var(--space-lg);
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (max-width: 640px) {
+  .team-layout {
+    grid-template-columns: 1fr;
+  }
 }
 
 .person {
