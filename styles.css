@@ -540,9 +540,8 @@ h3 {
 .infra-brief {
   margin-top: var(--space-xl);
   display: grid;
-  gap: 1px;
+  gap: var(--space-md);
   grid-template-columns: repeat(2, 1fr);
-  background: var(--line-subtle);
 }
 
 /* 5 items in 2-col grid: last item spans full width */
@@ -554,11 +553,16 @@ h3 {
   .infra-brief {
     grid-template-columns: 1fr;
   }
+  .infra-brief .infra-block:last-child {
+    grid-column: auto;
+  }
 }
 
 .infra-block {
   padding: var(--space-md) var(--space-md) var(--space-lg);
   background: var(--cream-0);
+  border: 1px solid var(--line-subtle);
+  border-radius: 8px;
 }
 
 .infra-block h3 {
