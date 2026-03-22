@@ -115,37 +115,33 @@
 
     <section class="section infra-pillar" data-scroll-reveal>
       <span class="hero-kicker">Development Infrastructure</span>
-      <h2>The engine behind the velocity</h2>
-      <p class="section-intro">Anchovy Labs ships at the pace it does because of a custom development infrastructure layer — not heroics, not shortcuts. This is the system that turns a four-person team into a production-grade operation.</p>
+      <h2>Hard problems we're working on</h2>
+      <p class="section-intro">Using AI to write code is the easy part. The hard part is everything around it. These are the questions we spend most of our infrastructure time on.</p>
 
       <div class="infra-brief">
         <div class="infra-block" data-stagger style="--stagger:0">
-          <h3>Multi-Agent Orchestration</h3>
-          <p>Specialized agents — planner, executor, reviewer — coordinate across the full development lifecycle. Role separation enforces quality gates at each stage, from architecture through code review to regression testing.</p>
+          <h3>Quality at generation speed</h3>
+          <p>Agents produce code faster than humans can review it. We gate every change against spec-driven acceptance criteria before it merges — automated verification, not trust. It catches more than manual review did, but calibrating the gates is ongoing work.</p>
         </div>
         <div class="infra-block" data-stagger style="--stagger:1">
-          <h3>Persistent Memory Architecture</h3>
-          <p>Context systems with compaction and cross-session continuity ensure that decisions, constraints, and domain knowledge survive across thousands of development sessions without degradation.</p>
+          <h3>Context across long-running work</h3>
+          <p>A session that loses context mid-task makes worse decisions than one that never had it. We maintain structured memory across sessions so that decisions, constraints, and domain knowledge persist. Getting compaction right — what to keep, what to drop — is harder than it sounds.</p>
         </div>
         <div class="infra-block" data-stagger style="--stagger:2">
-          <h3>Token-Efficient Model Routing</h3>
-          <p>Requests route across 15+ model providers with automatic failover. Routing optimizes for correctness first, then cost, then speed — not the other way around.</p>
+          <h3>Model routing</h3>
+          <p>We route through a model hierarchy that optimizes for correctness first, cost second, speed third. The routing adapts automatically when providers go down. This isn't novel — it's table stakes — but getting it reliable across many providers took longer than expected.</p>
         </div>
         <div class="infra-block" data-stagger style="--stagger:3">
-          <h3>Governed Execution Sessions</h3>
-          <p>Every implementation session runs against a spec-driven contract with verification gates. Work products are validated against acceptance criteria before they merge, not after.</p>
+          <h3>Detecting when things go off track</h3>
+          <p>Autonomous processes fail silently in ways that are expensive to debug after the fact. We use stagnation detection and circuit breakers to catch drift early. It works well enough that we trust unattended runs, but the false-positive rate is still higher than we'd like.</p>
         </div>
         <div class="infra-block" data-stagger style="--stagger:4">
-          <h3>Autonomous Pacemaker Loops</h3>
-          <p>Long-running workflows include circuit breakers and stagnation detection. If progress stalls, the system escalates or reroutes — no manual babysitting required.</p>
-        </div>
-        <div class="infra-block" data-stagger style="--stagger:5">
-          <h3>Distribution Automation</h3>
-          <p>From build through signing, screenshot generation, metadata localization, and App Store submission — the release pipeline runs with minimal human intervention.</p>
+          <h3>Observability</h3>
+          <p>You can't trust a system you can't see into. Every session, routing decision, and verification outcome is logged and traceable. The goal is that any failure can be understood from the logs alone — we're close but not there yet.</p>
         </div>
       </div>
 
-      <p class="infra-coda">This isn't a product we sell. It's how we build. The infrastructure exists because shipping four iOS products with a small team requires a system that compounds quality, not just speed.</p>
+      <p class="infra-coda">None of this is solved. It's infrastructure we build and revise continuously because the alternative is slowing down or shipping lower quality work. Neither is acceptable.</p>
     </section>
   </main>
 
