@@ -537,24 +537,81 @@ h3 {
   margin-bottom: var(--space-2xs);
 }
 
+/* Infra card-specific color tokens with Safari-safe fallbacks */
+:root {
+  --infra-card-bg: #faf8f5;
+  --infra-card-border: #e2ddd6;
+  --infra-card-title: #3c3328;
+  --infra-card-body: #5d5448;
+}
+
+@supports (color: oklch(50% 0.1 0)) {
+  :root {
+    --infra-card-bg: oklch(98% 0.008 82);
+    --infra-card-border: oklch(89% 0.012 80);
+    --infra-card-title: oklch(26% 0.025 70);
+    --infra-card-body: oklch(38% 0.02 72);
+  }
+}
+
 .infra-brief {
   margin-top: var(--space-xl);
-  display: grid;
-  gap: var(--space-md);
-  grid-template-columns: repeat(2, 1fr);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-left: calc(-1 * var(--space-md));
+}
+
+.infra-brief > .infra-block {
+  margin-top: var(--space-md);
+  margin-left: var(--space-md);
+  width: calc(50% - var(--space-md));
+}
+
+@supports (display: grid) {
+  .infra-brief {
+    margin-left: 0;
+    display: grid;
+    gap: var(--space-md);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .infra-brief > .infra-block {
+    margin-top: 0;
+    margin-left: 0;
+    width: auto;
+  }
 }
 
 @media (max-width: 700px) {
-  .infra-brief {
-    grid-template-columns: 1fr;
+  .infra-brief > .infra-block {
+    width: calc(100% - var(--space-md));
+  }
+}
+
+@media (max-width: 700px) {
+  @supports (display: grid) {
+    .infra-brief {
+      grid-template-columns: 1fr;
+    }
   }
 }
 
 .infra-block {
-  padding: var(--space-md) var(--space-md) var(--space-lg);
-  background: var(--cream-0);
-  border: 1px solid var(--line-subtle);
+  padding-top: var(--space-md);
+  padding-right: var(--space-md);
+  padding-bottom: var(--space-lg);
+  padding-left: var(--space-md);
+  background-color: var(--infra-card-bg, #faf8f5);
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--infra-card-border, #e2ddd6);
+  -webkit-border-radius: 8px;
   border-radius: 8px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .infra-block h3 {
@@ -562,17 +619,16 @@ h3 {
   font-size: var(--step-sm);
   font-weight: 700;
   letter-spacing: 0.01em;
-  color: var(--ink-0);
+  color: var(--infra-card-title, #3c3328);
   margin-bottom: var(--space-2xs);
 }
 
 .infra-block p {
   margin: 0;
-  color: var(--ink-1);
+  color: var(--infra-card-body, #5d5448);
   font-size: var(--step-sm);
   line-height: 1.55;
 }
-
 .infra-coda {
   margin-top: var(--space-lg);
   color: var(--ink-2);
