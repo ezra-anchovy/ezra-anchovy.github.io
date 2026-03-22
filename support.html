@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="page-load">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,66 +8,66 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="site-header">
-    <div class="container header-inner">
+  <header class="masthead-wrap">
+    <div class="masthead">
       <a class="brand" href="index.html">Anchovy Labs</a>
       <nav aria-label="Primary navigation">
-        <ul>
+        <ul class="nav-list">
           <li><a href="index.html">Home</a></li>
           <li><a href="apps.html">Apps</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="privacy.html">Privacy</a></li>
-          <li><a href="support.html">Support</a></li>
+          <li><a href="support.html" aria-current="page">Support</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <main class="container">
-    <section class="hero reveal">
+  <main class="page">
+    <section class="hero" data-reveal style="--i:0">
       <h1>Support</h1>
-      <p class="subtitle">Need help with an Anchovy Labs app? Contact us at <a href="mailto:support@anchovylabs.com">support@anchovylabs.com</a>.</p>
+      <p class="lede">Need help with an Anchovy Labs app? Contact us at <a href="mailto:support@anchovylabs.com">support@anchovylabs.com</a>.</p>
     </section>
 
-    <section id="faq" class="section reveal" aria-labelledby="faq-title">
-      <h2 id="faq-title">FAQ</h2>
-      <div class="grid">
-        <article class="faq-item">
+    <section id="faq" class="section" data-reveal style="--i:1">
+      <h2>FAQ</h2>
+      <div class="faq-grid">
+        <article class="faq-item" data-reveal style="--i:2">
           <h3>How do I restore purchases?</h3>
           <p>Open the app settings and tap "Restore Purchases" while signed in with the original Apple ID.</p>
         </article>
-        <article class="faq-item">
+        <article class="faq-item" data-reveal style="--i:2">
           <h3>Where can I report a bug?</h3>
           <p>Email support@anchovylabs.com with steps to reproduce and your iOS version.</p>
         </article>
-        <article class="faq-item">
+        <article class="faq-item" data-reveal style="--i:3">
           <h3>Do your apps work offline?</h3>
           <p>Core app features are available offline; cloud sync features require internet access.</p>
         </article>
-        <article class="faq-item">
+        <article class="faq-item" data-reveal style="--i:3">
           <h3>Can I request a feature?</h3>
           <p>Yes. Send feature requests by email and include your workflow so we can evaluate fit.</p>
         </article>
-        <article class="faq-item">
+        <article class="faq-item" data-reveal style="--i:4">
           <h3>How is my data protected?</h3>
           <p>We minimize data collection, use secure transport, and process privacy requests promptly.</p>
         </article>
-        <article class="faq-item">
+        <article class="faq-item" data-reveal style="--i:4">
           <h3>How fast is support response?</h3>
           <p>We typically reply within 1-2 business days.</p>
         </article>
       </div>
     </section>
 
-    <section class="section reveal" aria-labelledby="contact-form-title">
-      <h2 id="contact-form-title">Contact Form Placeholder</h2>
-      <p class="subtitle">A web contact form will be available soon. For now, email us directly.</p>
+    <section class="section" data-reveal style="--i:5">
+      <h2>Contact Us</h2>
+      <p class="section-intro">A web contact form will be available soon. For now, email us directly.</p>
       <div class="form-placeholder" role="img" aria-label="Contact form placeholder area"></div>
     </section>
   </main>
 
-  <footer>
-    <div class="container footer-grid">
+  <footer class="site-footer">
+    <div class="footer-inner">
       <section>
         <h2>Support Email</h2>
         <p><a href="mailto:support@anchovylabs.com">support@anchovylabs.com</a></p>
@@ -81,20 +81,7 @@
         <p><a href="about.html">About Anchovy Labs</a></p>
       </section>
     </div>
-    <div class="container footer-note">
-      <p>© 2026 Anchovy Labs LLC · New York, NY</p>
-    </div>
+    <p class="copyright">© 2026 Anchovy Labs LLC · New York, NY</p>
   </footer>
-
-    <script>
-    (function () {
-      var observer = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) entry.target.classList.add('in-view');
-        });
-      }, { threshold: 0.15 });
-      document.querySelectorAll('.reveal').forEach(function (el) { observer.observe(el); });
-    }());
-  </script>
 </body>
 </html>

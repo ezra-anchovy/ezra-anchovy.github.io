@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="page-load">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,36 +8,36 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="site-header">
-    <div class="container header-inner">
+  <header class="masthead-wrap">
+    <div class="masthead">
       <a class="brand" href="index.html">Anchovy Labs</a>
       <nav aria-label="Primary navigation">
-        <ul>
+        <ul class="nav-list">
           <li><a href="index.html">Home</a></li>
           <li><a href="apps.html">Apps</a></li>
           <li><a href="about.html">About</a></li>
-          <li><a href="privacy.html">Privacy</a></li>
+          <li><a href="privacy.html" aria-current="page">Privacy</a></li>
           <li><a href="support.html">Support</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <main class="container">
-    <section class="hero reveal" aria-labelledby="privacy-title">
-      <h1 id="privacy-title">Privacy Policy</h1>
-      <p class="subtitle">Effective date: March 15, 2026. Anchovy Labs is committed to protecting user privacy while delivering reliable iOS products.</p>
+  <main class="page">
+    <section class="hero" data-reveal style="--i:0">
+      <h1>Privacy Policy</h1>
+      <p class="lede">Effective date: March 15, 2026. Anchovy Labs is committed to protecting user privacy while delivering reliable iOS products.</p>
     </section>
 
-    <section class="section reveal" aria-labelledby="policy-overview">
-      <h2 id="policy-overview">Policy Overview</h2>
+    <section class="section policy-copy" data-reveal style="--i:1">
+      <h2>Policy Overview</h2>
       <p>We collect only the data necessary to provide and improve our apps. We do not sell personal information. Data is retained only as long as needed for service delivery, security, legal obligations, and user-requested support.</p>
       <p>Users may request access, correction, export, or deletion of personal data by contacting <a href="mailto:support@anchovylabs.com">support@anchovylabs.com</a>.</p>
     </section>
 
-    <section class="section reveal" aria-labelledby="per-app-details">
-      <h2 id="per-app-details">Per-App Privacy Details</h2>
-      <table class="table-like">
+    <section class="section" data-reveal style="--i:2">
+      <h2>Per-App Privacy Details</h2>
+      <table class="policy-table">
         <thead>
           <tr>
             <th>App</th>
@@ -70,15 +70,15 @@
       </table>
     </section>
 
-    <section class="section reveal" aria-labelledby="regulations">
-      <h2 id="regulations">GDPR and CCPA</h2>
+    <section class="section policy-copy" data-reveal style="--i:3">
+      <h2>GDPR and CCPA</h2>
       <p>For users in the European Economic Area, GDPR rights include access, rectification, erasure, portability, and objection to certain processing. We rely on consent, contractual necessity, and legitimate interests as legal bases when applicable.</p>
       <p>For California residents, CCPA rights include disclosure, deletion, correction, and non-discrimination for exercising privacy rights. Anchovy Labs does not sell personal information.</p>
     </section>
   </main>
 
-  <footer>
-    <div class="container footer-grid">
+  <footer class="site-footer">
+    <div class="footer-inner">
       <section>
         <h2>Privacy Requests</h2>
         <p><a href="mailto:support@anchovylabs.com">support@anchovylabs.com</a></p>
@@ -92,20 +92,7 @@
         <p>Policy changes will be posted on this page with an updated effective date.</p>
       </section>
     </div>
-    <div class="container footer-note">
-      <p>© 2026 Anchovy Labs LLC · New York, NY</p>
-    </div>
+    <p class="copyright">© 2026 Anchovy Labs LLC · New York, NY</p>
   </footer>
-
-    <script>
-    (function () {
-      var observer = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) entry.target.classList.add('in-view');
-        });
-      }, { threshold: 0.15 });
-      document.querySelectorAll('.reveal').forEach(function (el) { observer.observe(el); });
-    }());
-  </script>
 </body>
 </html>

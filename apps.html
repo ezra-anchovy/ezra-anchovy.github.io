@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="page-load">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,13 +13,13 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="site-header">
-    <div class="container header-inner">
+  <header class="masthead-wrap">
+    <div class="masthead">
       <a class="brand" href="index.html">Anchovy Labs</a>
       <nav aria-label="Primary navigation">
-        <ul>
+        <ul class="nav-list">
           <li><a href="index.html">Home</a></li>
-          <li><a href="apps.html">Apps</a></li>
+          <li><a href="apps.html" aria-current="page">Apps</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="privacy.html">Privacy</a></li>
           <li><a href="support.html">Support</a></li>
@@ -28,64 +28,69 @@
     </div>
   </header>
 
-  <main class="container">
-    <section class="hero reveal">
+  <main class="page">
+    <section class="hero" data-reveal style="--i:0">
+      <span class="hero-kicker">Portfolio</span>
       <h1>App Portfolio</h1>
-      <p class="subtitle">A focused suite of iOS products for security-aware scanning, structured planning, routine execution, and voice-first capture.</p>
+      <p class="lede">A focused suite of iOS products for security-aware scanning, structured planning, routine execution, and voice-first capture.</p>
     </section>
 
-    <section class="grid apps-grid apps-portfolio-grid reveal" aria-label="Apps list">
-      <article class="card app-card app-live-featured" id="qrion">
-        <img src="qrion/assets/icon.webp" alt="QRion app icon" class="app-icon" width="56" height="56">
-        <p class="status-badge status-live">Live</p>
-        <h2>QRion</h2>
-        <p class="app-value"><strong>Value:</strong> Check QR destinations before you open them.</p>
-        <p class="app-summary">Scan a code, inspect the destination, and review a safety verdict before opening unknown links.</p>
-        <p class="app-pricing"><strong>Pricing:</strong> Free download with premium features.</p>
-        <p class="app-stage-note"><a href="qrion/">Learn more</a> · <a href="https://apps.apple.com/app/id6760600108" target="_blank" rel="noopener noreferrer">View on the App Store</a></p>
-        <a class="app-store-badge app-cta-pill" href="https://apps.apple.com/app/id6760600108" target="_blank" rel="noopener noreferrer">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-          <span>On the App Store</span>
-        </a>
+    <div class="apps-list">
+      <article class="app-entry" id="qrion" data-reveal style="--i:1">
+        <img src="qrion/assets/icon.webp" alt="QRion app icon" class="app-icon" width="72" height="72" loading="lazy">
+        <div class="app-copy">
+          <p class="status live">Live</p>
+          <h2>QRion</h2>
+          <p><strong>Value:</strong> Check QR destinations before you open them.</p>
+          <p>Scan a code, inspect the destination, and review a safety verdict before opening unknown links.</p>
+          <p><strong>Pricing:</strong> Free download with premium features.</p>
+          <div class="app-links">
+            <a class="pill-link" href="qrion/">Learn more</a>
+            <a class="pill-link" href="https://apps.apple.com/app/id6760600108" target="_blank" rel="noopener noreferrer">View on the App Store</a>
+          </div>
+        </div>
       </article>
 
-      <article class="card app-card" id="preciq">
-        <img src="assets/app-icons/preciq.webp" alt="Preciq app icon" class="app-icon" width="56" height="56">
-        <p class="status-badge status-review">In Review</p>
-        <h2>Preciq</h2>
-        <p class="app-value"><strong>Value:</strong> Keep notes, tasks, and execution context in one stream.</p>
-        <p class="app-summary">Built for operators who need precision planning without heavyweight project tooling.</p>
-        <p class="app-pricing"><strong>Pricing:</strong> Planned free tier with Pro subscription.</p>
-        <p class="app-stage-note">App Store listing pending review.</p>
-        <a class="app-store-badge app-cta-pill" href="apps.html#preciq">In Review</a>
+      <article class="app-entry" id="preciq" data-reveal style="--i:2">
+        <img src="assets/app-icons/preciq.webp" alt="Preciq app icon" class="app-icon" width="72" height="72" loading="lazy">
+        <div class="app-copy">
+          <p class="status review">In Review</p>
+          <h2>Preciq</h2>
+          <p><strong>Value:</strong> Keep notes, tasks, and execution context in one stream.</p>
+          <p>Built for operators who need precision planning without heavyweight project tooling.</p>
+          <p><strong>Pricing:</strong> Planned free tier with Pro subscription.</p>
+          <p>App Store listing pending review.</p>
+        </div>
       </article>
 
-      <article class="card app-card" id="calmos">
-        <img src="assets/app-icons/calmos.webp" alt="Calmos app icon" class="app-icon" width="56" height="56">
-        <p class="status-badge status-dev">In Development</p>
-        <h2>Calmos</h2>
-        <p class="app-value"><strong>Value:</strong> Build stable routines with less scheduling overhead.</p>
-        <p class="app-summary">A calm planner for recurring priorities, habit loops, and low-friction daily execution.</p>
-        <p class="app-pricing"><strong>Pricing:</strong> Final pricing to be announced at launch.</p>
-        <p class="app-stage-note">Public beta planned.</p>
-        <a class="app-store-badge app-cta-pill" href="apps.html#calmos">In Development</a>
+      <article class="app-entry" id="calmos" data-reveal style="--i:3">
+        <img src="assets/app-icons/calmos.webp" alt="Calmos app icon" class="app-icon" width="72" height="72" loading="lazy">
+        <div class="app-copy">
+          <p class="status dev">In Development</p>
+          <h2>Calmos</h2>
+          <p><strong>Value:</strong> Build stable routines with less scheduling overhead.</p>
+          <p>A calm planner for recurring priorities, habit loops, and low-friction daily execution.</p>
+          <p><strong>Pricing:</strong> Final pricing to be announced at launch.</p>
+          <p>Public beta planned.</p>
+        </div>
       </article>
 
-      <article class="card app-card" id="voxiq">
-        <img src="assets/app-icons/voxiq.webp" alt="VoxIQ app icon" class="app-icon" width="56" height="56">
-        <p class="status-badge status-dev">In Development</p>
-        <h2>VoxIQ</h2>
-        <p class="app-value"><strong>Value:</strong> Turn spoken thoughts into organized action items.</p>
-        <p class="app-summary">Voice capture and summarization workflows built for real-time teams and field operators.</p>
-        <p class="app-pricing"><strong>Pricing:</strong> Final pricing to be announced at launch.</p>
-        <p class="app-stage-note">Early access waitlist opening soon.</p>
-        <a class="app-store-badge app-cta-pill" href="apps.html#voxiq">In Development</a>
+      <article class="app-entry" id="voxiq" data-reveal style="--i:4">
+        <img src="assets/app-icons/voxiq.webp" alt="VoxIQ app icon" class="app-icon" width="72" height="72" loading="lazy">
+        <div class="app-copy">
+          <p class="status dev">In Development</p>
+          <h2>VoxIQ</h2>
+          <p><strong>Value:</strong> Turn spoken thoughts into organized action items.</p>
+          <p>Voice capture and summarization workflows built for real-time teams and field operators.</p>
+          <p><strong>Pricing:</strong> Final pricing to be announced at launch.</p>
+          <p>Early access waitlist opening soon.</p>
+        </div>
       </article>
-    </section>
+    </div>
   </main>
 
-  <footer>
-    <div class="container footer-grid">
+  <footer class="site-footer">
+    <div class="footer-inner">
       <section>
         <h2>Need help?</h2>
         <p><a href="support.html">Visit support</a> or email <a href="mailto:support@anchovylabs.com">support@anchovylabs.com</a>.</p>
@@ -99,20 +104,7 @@
         <p><a href="privacy.html">Privacy Policy</a></p>
       </section>
     </div>
-    <div class="container footer-note">
-      <p>© 2026 Anchovy Labs LLC · New York, NY</p>
-    </div>
+    <p class="copyright">© 2026 Anchovy Labs LLC · New York, NY</p>
   </footer>
-
-  <script>
-    (function () {
-      var observer = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) entry.target.classList.add('in-view');
-        });
-      }, { threshold: 0.15 });
-      document.querySelectorAll('.reveal').forEach(function (el) { observer.observe(el); });
-    }());
-  </script>
 </body>
 </html>

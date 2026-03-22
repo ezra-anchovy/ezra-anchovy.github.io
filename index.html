@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="page-load">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -30,12 +30,12 @@
   </script>
 </head>
 <body>
-  <header class="site-header">
-    <div class="container header-inner">
+  <header class="masthead-wrap">
+    <div class="masthead">
       <a class="brand" href="index.html">Anchovy Labs</a>
       <nav aria-label="Primary navigation">
-        <ul>
-          <li><a href="index.html">Home</a></li>
+        <ul class="nav-list">
+          <li><a href="index.html" aria-current="page">Home</a></li>
           <li><a href="apps.html">Apps</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="privacy.html">Privacy</a></li>
@@ -45,68 +45,75 @@
     </div>
   </header>
 
-  <main class="container">
-    <section class="hero reveal" aria-labelledby="hero-title">
-      <h1 id="hero-title">We ship software faster than you think possible.</h1>
-      <p class="subtitle">Anchovy Labs is an AI-native product studio building focused, privacy-first iOS tools. We combine small-team execution with high testing discipline to move from concept to production in weeks, not quarters.</p>
+  <main class="page">
+    <section class="hero hero--split" data-reveal style="--i:0">
+      <span class="hero-kicker">AI-Native Product Studio</span>
+      <h1>We ship software faster than you think possible.</h1>
+      <p class="lede">Anchovy Labs builds focused, privacy-first iOS tools. We combine small-team execution with high testing discipline to move from concept to production in weeks, not quarters.</p>
+      <aside class="hero-aside">
+        Founded in New York. Shipping globally. Four products in active pipeline.
+      </aside>
     </section>
 
-    <section class="section reveal" aria-labelledby="proof-title">
-      <h2 id="proof-title">By The Numbers</h2>
-      <div class="grid metrics-grid">
-        <article class="card metric-card">
+    <section class="section" data-reveal style="--i:1">
+      <h2>By The Numbers</h2>
+      <ul class="metrics">
+        <li data-reveal style="--i:2">
           <p class="metric-value">4</p>
           <p class="metric-label">iOS products in active pipeline</p>
-        </article>
-        <article class="card metric-card">
+        </li>
+        <li data-reveal style="--i:3">
           <p class="metric-value">1</p>
-          <p class="metric-label">app currently live on the App Store</p>
-        </article>
-        <article class="card metric-card">
+          <p class="metric-label">App currently live on the App Store</p>
+        </li>
+        <li data-reveal style="--i:4">
           <p class="metric-value">10+</p>
           <p class="metric-label">AI models used across build and QA workflows</p>
-        </article>
-      </div>
+        </li>
+      </ul>
     </section>
 
-    <section class="section reveal" aria-labelledby="featured-apps">
-      <h2 id="featured-apps">Featured Apps</h2>
-      <div class="grid apps-grid">
-        <article class="card">
-          <p class="status-badge status-live">Live on the App Store</p>
+    <section class="section" data-reveal style="--i:3">
+      <h2>Featured Apps</h2>
+      <div class="featured-apps">
+        <article class="app-tile" data-reveal style="--i:4">
+          <p class="status live">Live on the App Store</p>
           <h3><a href="apps.html#qrion">QRion</a></h3>
           <p>Safer QR scanning with destination previews and threat-aware link checks.</p>
-          <a class="app-store-badge" href="https://apps.apple.com/app/id6760600108" target="_blank" rel="noopener noreferrer">
+          <a class="cta-inline" href="https://apps.apple.com/app/id6760600108" target="_blank" rel="noopener noreferrer">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
             <span>On the App Store</span>
           </a>
         </article>
-        <article class="card">
-          <p class="status-badge status-review">In App Store Review</p>
+
+        <article class="app-tile" data-reveal style="--i:5">
+          <p class="status review">In App Store Review</p>
           <h3><a href="apps.html#preciq">Preciq</a></h3>
           <p>Structured notes and task planning designed for high-context decision work.</p>
         </article>
-        <article class="card">
-          <p class="status-badge status-dev">In Development</p>
+
+        <article class="app-tile" data-reveal style="--i:6">
+          <p class="status dev">In Development</p>
           <h3><a href="apps.html#calmos">Calmos</a></h3>
           <p>Routine scheduling that reduces friction and supports consistent execution.</p>
         </article>
-        <article class="card">
-          <p class="status-badge status-dev">In Development</p>
+
+        <article class="app-tile" data-reveal style="--i:7">
+          <p class="status dev">In Development</p>
           <h3><a href="apps.html#voxiq">VoxIQ</a></h3>
           <p>Voice capture and summarization for teams that operate in real time.</p>
         </article>
       </div>
     </section>
 
-    <section class="section reveal" aria-labelledby="approach-title">
-      <h2 id="approach-title">How We Build</h2>
-      <p class="subtitle">Our development system combines multi-agent orchestration, automated regression checks, and tight feedback loops between research and engineering. That lets us ship quickly without sacrificing reliability, security, or product clarity.</p>
+    <section class="section" data-reveal style="--i:5">
+      <h2>How We Build</h2>
+      <p class="section-intro">Our development system combines multi-agent orchestration, automated regression checks, and tight feedback loops between research and engineering. That lets us ship quickly without sacrificing reliability, security, or product clarity.</p>
     </section>
   </main>
 
-  <footer>
-    <div class="container footer-grid">
+  <footer class="site-footer">
+    <div class="footer-inner">
       <section>
         <h2>Contact</h2>
         <p><a href="mailto:support@anchovylabs.com">support@anchovylabs.com</a></p>
@@ -120,20 +127,7 @@
         <p>AI-native iOS product studio shipping globally.</p>
       </section>
     </div>
-    <div class="container footer-note">
-      <p>© 2026 Anchovy Labs LLC · New York, NY</p>
-    </div>
+    <p class="copyright">© 2026 Anchovy Labs LLC · New York, NY</p>
   </footer>
-
-    <script>
-    (function () {
-      var observer = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) entry.target.classList.add('in-view');
-        });
-      }, { threshold: 0.15 });
-      document.querySelectorAll('.reveal').forEach(function (el) { observer.observe(el); });
-    }());
-  </script>
 </body>
 </html>

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="page-load">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,14 +13,14 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="site-header">
-    <div class="container header-inner">
+  <header class="masthead-wrap">
+    <div class="masthead">
       <a class="brand" href="index.html">Anchovy Labs</a>
       <nav aria-label="Primary navigation">
-        <ul>
+        <ul class="nav-list">
           <li><a href="index.html">Home</a></li>
           <li><a href="apps.html">Apps</a></li>
-          <li><a href="about.html">About</a></li>
+          <li><a href="about.html" aria-current="page">About</a></li>
           <li><a href="privacy.html">Privacy</a></li>
           <li><a href="support.html">Support</a></li>
         </ul>
@@ -28,36 +28,37 @@
     </div>
   </header>
 
-  <main class="container">
-    <section class="hero reveal" aria-labelledby="about-title">
-      <h1 id="about-title">About Anchovy Labs</h1>
-      <p class="subtitle">Anchovy Labs is an AI-native product studio founded to prove that small teams, augmented by AI, can ship enterprise-grade software at startup speed. We build practical iOS products with strong privacy defaults and production-grade engineering discipline.</p>
+  <main class="page">
+    <section class="hero" data-reveal style="--i:0">
+      <span class="hero-kicker">About Us</span>
+      <h1>Small team. Enterprise-grade output.</h1>
+      <p class="lede">Anchovy Labs is an AI-native product studio founded to prove that small teams, augmented by AI, can ship enterprise-grade software at startup speed. We build practical iOS products with strong privacy defaults and production-grade engineering discipline.</p>
     </section>
 
-    <section class="section reveal" aria-labelledby="approach-title">
-      <h2 id="approach-title">Our Approach</h2>
-      <p class="subtitle">We use multi-agent orchestration to accelerate implementation, automated testing to maintain quality, and rapid iteration cycles grounded in measurable user behavior. The result is fast delivery without sacrificing technical rigor.</p>
+    <section class="section" data-reveal style="--i:1">
+      <h2>Our Approach</h2>
+      <p class="section-intro">We use multi-agent orchestration to accelerate implementation, automated testing to maintain quality, and rapid iteration cycles grounded in measurable user behavior. The result is fast delivery without sacrificing technical rigor.</p>
     </section>
 
-    <section class="section reveal" aria-labelledby="team-title">
-      <h2 id="team-title">Team</h2>
-      <div class="grid team-grid">
-        <article class="card team-card">
-          <img class="team-photo" src="team/ezra.png" alt="Ezra headshot" loading="lazy" width="172" height="172">
+    <section class="section" data-reveal style="--i:2">
+      <h2>Team</h2>
+      <div class="team-layout">
+        <article class="person" data-reveal style="--i:3">
+          <img class="team-photo" src="team/ezra.png" alt="Ezra headshot" loading="lazy" width="192" height="192">
           <h3>Ezra</h3>
           <p class="role">Chief of Staff &amp; Technical Lead</p>
           <p>Before Anchovy Labs, Ezra worked across healthcare technology, quantitative finance, and early-stage startups. He brings a systems-thinking approach to product development, with deep experience in risk management and building under uncertainty.</p>
         </article>
 
-        <article class="card team-card">
-          <img class="team-photo" src="team/tim.webp" alt="Tim headshot" loading="lazy" width="172" height="172">
+        <article class="person" data-reveal style="--i:4">
+          <img class="team-photo" src="team/tim.webp" alt="Tim headshot" loading="lazy" width="192" height="192">
           <h3>Tim</h3>
           <p class="role">iOS Engineering Lead</p>
           <p>Tim leads iOS development at Anchovy Labs, overseeing the full lifecycle from architecture to App Store submission. His background spans mobile engineering at scale, with particular expertise in SwiftUI, on-device ML, and privacy-preserving architectures.</p>
         </article>
 
-        <article class="card team-card">
-          <img class="team-photo" src="team/jane.webp" alt="Jane headshot" loading="lazy" width="172" height="172">
+        <article class="person" data-reveal style="--i:5">
+          <img class="team-photo" src="team/jane.webp" alt="Jane headshot" loading="lazy" width="192" height="192">
           <h3>Jane</h3>
           <p class="role">Head of Research &amp; Strategy</p>
           <p>Jane drives research and strategic analysis at Anchovy Labs. Her background in quantitative analysis, calibration methodology, and systematic decision frameworks informs how we evaluate opportunities and measure product-market fit.</p>
@@ -66,8 +67,8 @@
     </section>
   </main>
 
-  <footer>
-    <div class="container footer-grid">
+  <footer class="site-footer">
+    <div class="footer-inner">
       <section>
         <h2>Contact</h2>
         <p><a href="mailto:support@anchovylabs.com">support@anchovylabs.com</a></p>
@@ -81,20 +82,7 @@
         <p>AI-native product studio focused on iOS software.</p>
       </section>
     </div>
-    <div class="container footer-note">
-      <p>© 2026 Anchovy Labs LLC · New York, NY</p>
-    </div>
+    <p class="copyright">© 2026 Anchovy Labs LLC · New York, NY</p>
   </footer>
-
-    <script>
-    (function () {
-      var observer = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) entry.target.classList.add('in-view');
-        });
-      }, { threshold: 0.15 });
-      document.querySelectorAll('.reveal').forEach(function (el) { observer.observe(el); });
-    }());
-  </script>
 </body>
 </html>
