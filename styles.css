@@ -241,6 +241,7 @@ h1 {
 .app-card span {
   min-width: 0;
   overflow-wrap: anywhere;
+  word-wrap: break-word;
   word-break: break-word;
 }
 
@@ -249,9 +250,21 @@ h1 {
 }
 
 .app-icon {
+  width: 56px;
+  height: 56px;
   border-radius: 14px;
   border: 1px solid var(--border);
   box-shadow: var(--shadow);
+  object-fit: cover;
+}
+
+.app-icon-fallback {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: var(--text);
+  background: color-mix(in srgb, var(--surface-elevated) 92%, white);
 }
 
 .app-shot {
