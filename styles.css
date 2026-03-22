@@ -230,6 +230,22 @@ h1 {
 .app-card {
   display: grid;
   gap: 0.65rem;
+  min-width: 0;
+  overflow: hidden;
+  padding: 1.1rem;
+}
+
+.app-card h2,
+.app-card p,
+.app-card a,
+.app-card span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.app-card > * {
+  max-width: 100%;
 }
 
 .app-icon {
@@ -290,6 +306,8 @@ h1 {
 
 .screenshot-placeholder {
   width: 100%;
+  max-width: 100%;
+  min-width: 0;
   aspect-ratio: 16 / 10;
 }
 
