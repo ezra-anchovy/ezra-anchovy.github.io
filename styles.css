@@ -253,14 +253,16 @@ h1 {
   display: grid;
   gap: 0.55rem;
   align-content: start;
+  justify-items: start;
 }
 
 .team-photo {
-  width: 100%;
-  max-width: 210px;
+  width: 172px;
+  height: 172px;
+  max-width: 100%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
-  border-radius: 16px;
+  border-radius: 20px;
   border: 1px solid var(--border);
   background: #fff;
 }
