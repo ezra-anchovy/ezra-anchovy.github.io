@@ -38,12 +38,16 @@
       <p class="lede">A focused suite of iOS products for security-aware scanning, structured planning, routine execution, and voice-first capture.</p>
     </section>
 
-    <div class="apps-list">
-      <article class="app-entry" id="qrion" data-reveal style="--i:1">
-        <img src="qrion/assets/icon.webp" alt="QRion app icon" class="app-icon" width="72" height="72" loading="lazy">
+    <div class="apps-list" data-scroll-reveal>
+      <article class="app-entry" id="qrion" data-stagger style="--stagger:0">
+        <div class="app-entry-header">
+          <img src="qrion/assets/icon.webp" alt="QRion app icon" class="app-icon" width="64" height="64" loading="lazy">
+          <div class="app-title-group">
+            <p class="status live">Live</p>
+            <h2 style="font-family:var(--font-display);font-size:var(--step-xl);font-weight:480">QRion</h2>
+          </div>
+        </div>
         <div class="app-copy">
-          <p class="status live">Live</p>
-          <h2>QRion</h2>
           <p><strong>Value:</strong> Check QR destinations before you open them.</p>
           <p>Scan a code, inspect the destination, and review a safety verdict before opening unknown links.</p>
           <p><strong>Pricing:</strong> Free download with premium features.</p>
@@ -54,39 +58,48 @@
         </div>
       </article>
 
-      <article class="app-entry" id="preciq" data-reveal style="--i:2">
-        <img src="assets/app-icons/preciq.webp" alt="Preciq app icon" class="app-icon" width="72" height="72" loading="lazy">
+      <article class="app-entry" id="preciq" data-stagger style="--stagger:1">
+        <div class="app-entry-header">
+          <img src="assets/app-icons/preciq.webp" alt="Preciq app icon" class="app-icon" width="64" height="64" loading="lazy">
+          <div class="app-title-group">
+            <p class="status review">In Review</p>
+            <h2 style="font-family:var(--font-display);font-size:var(--step-xl);font-weight:480">Preciq</h2>
+          </div>
+        </div>
         <div class="app-copy">
-          <p class="status review">In Review</p>
-          <h2>Preciq</h2>
           <p><strong>Value:</strong> Keep notes, tasks, and execution context in one stream.</p>
           <p>Built for operators who need precision planning without heavyweight project tooling.</p>
           <p><strong>Pricing:</strong> Planned free tier with Pro subscription.</p>
-          <p>App Store listing pending review.</p>
         </div>
       </article>
 
-      <article class="app-entry" id="calmos" data-reveal style="--i:3">
-        <img src="assets/app-icons/calmos.webp" alt="Calmos app icon" class="app-icon" width="72" height="72" loading="lazy">
+      <article class="app-entry" id="calmos" data-stagger style="--stagger:2">
+        <div class="app-entry-header">
+          <img src="assets/app-icons/calmos.webp" alt="Calmos app icon" class="app-icon" width="64" height="64" loading="lazy">
+          <div class="app-title-group">
+            <p class="status dev">In Development</p>
+            <h2 style="font-family:var(--font-display);font-size:var(--step-xl);font-weight:480">Calmos</h2>
+          </div>
+        </div>
         <div class="app-copy">
-          <p class="status dev">In Development</p>
-          <h2>Calmos</h2>
           <p><strong>Value:</strong> Build stable routines with less scheduling overhead.</p>
           <p>A calm planner for recurring priorities, habit loops, and low-friction daily execution.</p>
           <p><strong>Pricing:</strong> Final pricing to be announced at launch.</p>
-          <p>Public beta planned.</p>
         </div>
       </article>
 
-      <article class="app-entry" id="voxiq" data-reveal style="--i:4">
-        <img src="assets/app-icons/voxiq.webp" alt="VoxIQ app icon" class="app-icon" width="72" height="72" loading="lazy">
+      <article class="app-entry" id="voxiq" data-stagger style="--stagger:3">
+        <div class="app-entry-header">
+          <img src="assets/app-icons/voxiq.webp" alt="VoxIQ app icon" class="app-icon" width="64" height="64" loading="lazy">
+          <div class="app-title-group">
+            <p class="status dev">In Development</p>
+            <h2 style="font-family:var(--font-display);font-size:var(--step-xl);font-weight:480">VoxIQ</h2>
+          </div>
+        </div>
         <div class="app-copy">
-          <p class="status dev">In Development</p>
-          <h2>VoxIQ</h2>
           <p><strong>Value:</strong> Turn spoken thoughts into organized action items.</p>
           <p>Voice capture and summarization workflows built for real-time teams and field operators.</p>
           <p><strong>Pricing:</strong> Final pricing to be announced at launch.</p>
-          <p>Early access waitlist opening soon.</p>
         </div>
       </article>
     </div>
@@ -107,7 +120,27 @@
         <p><a href="privacy.html">Privacy Policy</a></p>
       </section>
     </div>
-    <p class="copyright">© 2026 Anchovy Labs LLC · New York, NY</p>
+    <p class="copyright">&copy; 2026 Anchovy Labs LLC &middot; New York, NY</p>
   </footer>
+
+  <script>
+    (function () {
+      var targets = document.querySelectorAll('[data-scroll-reveal]');
+      if (!targets.length) return;
+      if (!('IntersectionObserver' in window)) {
+        targets.forEach(function (el) { el.classList.add('is-visible'); });
+        return;
+      }
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+      targets.forEach(function (el) { observer.observe(el); });
+    })();
+  </script>
 </body>
 </html>

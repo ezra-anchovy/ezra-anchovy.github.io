@@ -38,30 +38,30 @@
       <p class="lede">Anchovy Labs is an AI-native product studio founded to prove that small teams, augmented by AI, can ship enterprise-grade software at startup speed. We build practical iOS products with strong privacy defaults and production-grade engineering discipline.</p>
     </section>
 
-    <section class="section" data-reveal style="--i:1">
+    <section class="section" data-scroll-reveal>
       <h2>Our Approach</h2>
       <p class="section-intro">We use multi-agent orchestration to accelerate implementation, automated testing to maintain quality, and rapid iteration cycles grounded in measurable user behavior. The result is fast delivery without sacrificing technical rigor.</p>
     </section>
 
-    <section class="section" data-reveal style="--i:2">
+    <section class="section" data-scroll-reveal>
       <h2>Team</h2>
       <div class="team-layout">
-        <article class="person" data-reveal style="--i:3">
-          <img class="team-photo" src="team/ezra.png" alt="Ezra headshot" loading="lazy" width="192" height="192">
+        <article class="person" data-stagger style="--stagger:0">
+          <img class="team-photo" src="team/ezra.png" alt="Ezra headshot" loading="lazy" width="140" height="140">
           <h3>Ezra</h3>
           <p class="role">Chief of Staff &amp; Technical Lead</p>
           <p>Before Anchovy Labs, Ezra worked across healthcare technology, quantitative finance, and early-stage startups. He brings a systems-thinking approach to product development, with deep experience in risk management and building under uncertainty.</p>
         </article>
 
-        <article class="person" data-reveal style="--i:4">
-          <img class="team-photo" src="team/tim.webp" alt="Tim headshot" loading="lazy" width="192" height="192">
+        <article class="person" data-stagger style="--stagger:1">
+          <img class="team-photo" src="team/tim.webp" alt="Tim headshot" loading="lazy" width="140" height="140">
           <h3>Tim</h3>
           <p class="role">iOS Engineering Lead</p>
           <p>Tim leads iOS development at Anchovy Labs, overseeing the full lifecycle from architecture to App Store submission. His background spans mobile engineering at scale, with particular expertise in SwiftUI, on-device ML, and privacy-preserving architectures.</p>
         </article>
 
-        <article class="person" data-reveal style="--i:5">
-          <img class="team-photo" src="team/jane.webp" alt="Jane headshot" loading="lazy" width="192" height="192">
+        <article class="person" data-stagger style="--stagger:2">
+          <img class="team-photo" src="team/jane.webp" alt="Jane headshot" loading="lazy" width="140" height="140">
           <h3>Jane</h3>
           <p class="role">Head of Research &amp; Strategy</p>
           <p>Jane drives research and strategic analysis at Anchovy Labs. Her background in quantitative analysis, calibration methodology, and systematic decision frameworks informs how we evaluate opportunities and measure product-market fit.</p>
@@ -75,17 +75,41 @@
       <section>
         <h2>Contact</h2>
         <p><a href="mailto:support@anchovylabs.com">support@anchovylabs.com</a></p>
+        <p style="margin-top:0.5rem">New York, NY</p>
       </section>
       <section>
         <h2>Explore</h2>
-        <p><a href="index.html">Home</a> · <a href="apps.html">Apps</a> · <a href="privacy.html">Privacy</a> · <a href="support.html">Support</a></p>
+        <p><a href="index.html">Home</a></p>
+        <p><a href="apps.html">Apps</a></p>
+        <p><a href="privacy.html">Privacy</a></p>
+        <p><a href="support.html">Support</a></p>
       </section>
       <section>
         <h2>Company</h2>
-        <p>AI-native product studio focused on iOS software.</p>
+        <p>AI-native product studio focused on privacy-first iOS software.</p>
       </section>
     </div>
-    <p class="copyright">© 2026 Anchovy Labs LLC · New York, NY</p>
+    <p class="copyright">&copy; 2026 Anchovy Labs LLC &middot; New York, NY</p>
   </footer>
+
+  <script>
+    (function () {
+      var targets = document.querySelectorAll('[data-scroll-reveal]');
+      if (!targets.length) return;
+      if (!('IntersectionObserver' in window)) {
+        targets.forEach(function (el) { el.classList.add('is-visible'); });
+        return;
+      }
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+      targets.forEach(function (el) { observer.observe(el); });
+    })();
+  </script>
 </body>
 </html>

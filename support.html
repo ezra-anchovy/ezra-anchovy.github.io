@@ -28,44 +28,44 @@
 
   <main class="page">
     <section class="hero" data-reveal style="--i:0">
+      <span class="hero-kicker">Help Center</span>
       <h1>Support</h1>
       <p class="lede">Need help with an Anchovy Labs app? Contact us at <a href="mailto:support@anchovylabs.com">support@anchovylabs.com</a>.</p>
     </section>
 
-    <section id="faq" class="section" data-reveal style="--i:1">
+    <section id="faq" class="section" data-scroll-reveal>
       <h2>FAQ</h2>
       <div class="faq-grid">
-        <article class="faq-item" data-reveal style="--i:2">
+        <article class="faq-item" data-stagger style="--stagger:0">
           <h3>How do I restore purchases?</h3>
           <p>Open the app settings and tap "Restore Purchases" while signed in with the original Apple ID.</p>
         </article>
-        <article class="faq-item" data-reveal style="--i:2">
+        <article class="faq-item" data-stagger style="--stagger:1">
           <h3>Where can I report a bug?</h3>
           <p>Email support@anchovylabs.com with steps to reproduce and your iOS version.</p>
         </article>
-        <article class="faq-item" data-reveal style="--i:3">
+        <article class="faq-item" data-stagger style="--stagger:2">
           <h3>Do your apps work offline?</h3>
           <p>Core app features are available offline; cloud sync features require internet access.</p>
         </article>
-        <article class="faq-item" data-reveal style="--i:3">
+        <article class="faq-item" data-stagger style="--stagger:3">
           <h3>Can I request a feature?</h3>
           <p>Yes. Send feature requests by email and include your workflow so we can evaluate fit.</p>
         </article>
-        <article class="faq-item" data-reveal style="--i:4">
+        <article class="faq-item" data-stagger style="--stagger:4">
           <h3>How is my data protected?</h3>
           <p>We minimize data collection, use secure transport, and process privacy requests promptly.</p>
         </article>
-        <article class="faq-item" data-reveal style="--i:4">
+        <article class="faq-item" data-stagger style="--stagger:5">
           <h3>How fast is support response?</h3>
           <p>We typically reply within 1-2 business days.</p>
         </article>
       </div>
     </section>
 
-    <section class="section" data-reveal style="--i:5">
+    <section class="section" data-scroll-reveal>
       <h2>Contact Us</h2>
-      <p class="section-intro">A web contact form will be available soon. For now, email us directly.</p>
-      <div class="form-placeholder" role="img" aria-label="Contact form placeholder area"></div>
+      <p class="section-intro">A web contact form will be available soon. For now, email us directly at <a href="mailto:support@anchovylabs.com">support@anchovylabs.com</a>.</p>
     </section>
   </main>
 
@@ -77,14 +77,35 @@
       </section>
       <section>
         <h2>Useful Links</h2>
-        <p><a href="apps.html">App Portfolio</a> · <a href="privacy.html">Privacy Policy</a></p>
+        <p><a href="apps.html">App Portfolio</a></p>
+        <p><a href="privacy.html">Privacy Policy</a></p>
       </section>
       <section>
         <h2>Company</h2>
         <p><a href="about.html">About Anchovy Labs</a></p>
       </section>
     </div>
-    <p class="copyright">© 2026 Anchovy Labs LLC · New York, NY</p>
+    <p class="copyright">&copy; 2026 Anchovy Labs LLC &middot; New York, NY</p>
   </footer>
+
+  <script>
+    (function () {
+      var targets = document.querySelectorAll('[data-scroll-reveal]');
+      if (!targets.length) return;
+      if (!('IntersectionObserver' in window)) {
+        targets.forEach(function (el) { el.classList.add('is-visible'); });
+        return;
+      }
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+      targets.forEach(function (el) { observer.observe(el); });
+    })();
+  </script>
 </body>
 </html>

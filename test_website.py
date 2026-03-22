@@ -53,7 +53,7 @@ def test_index_mentions_all_app_names():
 
 def test_apps_page_has_four_app_cards():
     content = read_file("apps.html")
-    cards = re.findall(r'class="[^"]*app-card[^"]*"', content)
+    cards = re.findall(r'class="app-entry"', content)
     assert len(cards) == 4, "apps.html should contain exactly 4 app cards"
 
 
@@ -68,11 +68,12 @@ def test_support_has_faq_section():
     assert re.search(r">\s*FAQ\s*<", content, re.I), "support.html missing FAQ heading"
 
 
-def test_styles_has_dark_mode_variables():
+def test_styles_has_design_tokens():
     content = read_file("styles.css")
     assert ":root" in content
-    assert "--bg" in content
-    assert ":root.theme-light" in content
+    assert "--cream-0" in content
+    assert "--ink-0" in content
+    assert "--font-display" in content
 
 
 def test_styles_has_responsive_media_queries():
