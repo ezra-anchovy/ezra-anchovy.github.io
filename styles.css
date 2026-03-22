@@ -543,6 +543,11 @@ h3 {
   gap: 1px;
   grid-template-columns: repeat(2, 1fr);
   background: var(--line-subtle);
+}
+
+/* 5 items in 2-col grid: last item spans full width */
+.infra-brief .infra-block:last-child {
+  grid-column: 1 / -1;
   border: 1px solid var(--line-subtle);
   border-radius: 8px;
   overflow: hidden;
