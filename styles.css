@@ -1,10 +1,7 @@
 /* ===================================================================
    Anchovy Labs — Editorial Precision Design System
-   Fraunces + DM Sans · OKLCH palette · Staggered reveal
+   Fraunces + DM Sans · OKLCH palette w/ hex fallbacks · Staggered reveal
    =================================================================== */
-
-/* --- Google Fonts ------------------------------------------------- */
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&display=swap');
 
 /* --- Design Tokens ------------------------------------------------ */
 :root {
@@ -26,45 +23,36 @@
   --leading-body: 1.58;
 
   /* Spacing — 4pt base, semantic naming */
-  --space-3xs: 0.25rem;   /* 4px */
-  --space-2xs: 0.5rem;    /* 8px */
-  --space-xs: 0.75rem;    /* 12px */
-  --space-sm: 1rem;       /* 16px */
-  --space-md: 1.5rem;     /* 24px */
-  --space-lg: 2.25rem;    /* 36px */
+  --space-3xs: 0.25rem;
+  --space-2xs: 0.5rem;
+  --space-xs: 0.75rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.25rem;
   --space-xl: clamp(3rem, 2.2rem + 2vw, 4.5rem);
   --space-2xl: clamp(4.5rem, 3.3rem + 3vw, 7rem);
   --space-3xl: clamp(6.5rem, 5rem + 4vw, 9.5rem);
 
-  /* OKLCH Color Palette — warm-tinted neutrals */
-  /* Surfaces (60%) */
-  --cream-0: oklch(98.5% 0.008 82);
-  --cream-1: oklch(96% 0.013 82);
-  --cream-2: oklch(92% 0.018 80);
+  /* --- Colors — hex fallbacks (safe for all browsers) --- */
+  --cream-0: #fbf9f7;
+  --cream-1: #f4f0eb;
+  --cream-2: #eae4db;
+  --ink-0: #3c3328;
+  --ink-1: #5d5448;
+  --ink-2: #807668;
+  --line: #d4cdc3;
+  --line-subtle: #e2ddd6;
+  --accent: #2a6169;
+  --accent-hover: #1a5260;
+  --accent-soft: #e3eef1;
+  --status-live: #2d7455;
+  --status-review: #8b7a3e;
+  --status-dev: #4d6e8a;
 
-  /* Ink (30%) */
-  --ink-0: oklch(26% 0.025 70);
-  --ink-1: oklch(38% 0.02 72);
-  --ink-2: oklch(52% 0.018 72);
-
-  /* Borders & rules */
-  --line: oklch(84% 0.016 78);
-  --line-subtle: oklch(89% 0.012 80);
-
-  /* Accent — deep teal (10%) */
-  --accent: oklch(42% 0.085 210);
-  --accent-hover: oklch(36% 0.095 210);
-  --accent-soft: oklch(94% 0.025 200);
-
-  /* Status indicators */
-  --status-live: oklch(46% 0.08 165);
-  --status-review: oklch(55% 0.09 85);
-  --status-dev: oklch(50% 0.07 232);
-
-  /* Shadows */
-  --shadow-sm: 0 1px 3px oklch(30% 0.02 70 / 0.06);
-  --shadow-md: 0 8px 30px oklch(30% 0.02 70 / 0.07);
-  --shadow-lg: 0 22px 55px oklch(30% 0.02 70 / 0.08);
+  /* Shadows — rgba fallbacks */
+  --shadow-sm: 0 1px 3px rgba(60, 51, 40, 0.06);
+  --shadow-md: 0 8px 30px rgba(60, 51, 40, 0.07);
+  --shadow-lg: 0 22px 55px rgba(60, 51, 40, 0.08);
 
   /* Motion */
   --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
@@ -75,7 +63,31 @@
 
   /* Layout */
   --page-max: 1120px;
-  --page-gutter: max(1.25rem, 4vw);
+  --page-gutter: 4vw;
+  --page-gutter-min: 1.25rem;
+}
+
+/* --- OKLCH upgrade for modern browsers --- */
+@supports (color: oklch(50% 0.1 0)) {
+  :root {
+    --cream-0: oklch(98.5% 0.008 82);
+    --cream-1: oklch(96% 0.013 82);
+    --cream-2: oklch(92% 0.018 80);
+    --ink-0: oklch(26% 0.025 70);
+    --ink-1: oklch(38% 0.02 72);
+    --ink-2: oklch(52% 0.018 72);
+    --line: oklch(84% 0.016 78);
+    --line-subtle: oklch(89% 0.012 80);
+    --accent: oklch(42% 0.085 210);
+    --accent-hover: oklch(36% 0.095 210);
+    --accent-soft: oklch(94% 0.025 200);
+    --status-live: oklch(46% 0.08 165);
+    --status-review: oklch(55% 0.09 85);
+    --status-dev: oklch(50% 0.07 232);
+    --shadow-sm: 0 1px 3px oklch(30% 0.02 70 / 0.06);
+    --shadow-md: 0 8px 30px oklch(30% 0.02 70 / 0.07);
+    --shadow-lg: 0 22px 55px oklch(30% 0.02 70 / 0.08);
+  }
 }
 
 /* --- Reset & Base ------------------------------------------------- */
@@ -109,9 +121,18 @@ body::before {
   z-index: -1;
   pointer-events: none;
   background:
-    radial-gradient(60rem 24rem at 85% -5%, oklch(93% 0.028 200 / 0.3), transparent 70%),
-    radial-gradient(42rem 24rem at -8% 8%, oklch(95.5% 0.02 100 / 0.4), transparent 75%),
+    radial-gradient(60rem 24rem at 85% -5%, rgba(213, 232, 237, 0.3), transparent 70%),
+    radial-gradient(42rem 24rem at -8% 8%, rgba(243, 240, 225, 0.4), transparent 75%),
     linear-gradient(to bottom, var(--cream-1), var(--cream-0));
+}
+
+@supports (color: oklch(50% 0.1 0)) {
+  body::before {
+    background:
+      radial-gradient(60rem 24rem at 85% -5%, oklch(93% 0.028 200 / 0.3), transparent 70%),
+      radial-gradient(42rem 24rem at -8% 8%, oklch(95.5% 0.02 100 / 0.4), transparent 75%),
+      linear-gradient(to bottom, var(--cream-1), var(--cream-0));
+  }
 }
 
 img {
@@ -156,7 +177,7 @@ h1 {
   font-weight: 480;
   letter-spacing: -0.01em;
   max-width: 20ch;
-  margin-left: -0.03em; /* optical alignment */
+  margin-left: -0.03em;
 }
 
 h2 {
@@ -182,19 +203,33 @@ h3 {
   z-index: 20;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  background: oklch(97.5% 0.01 82 / 0.88);
-  border-bottom: 1px solid oklch(86% 0.014 80 / 0.65);
+  background: rgba(249, 245, 240, 0.88);
+  border-bottom: 1px solid rgba(212, 205, 195, 0.65);
+}
+
+@supports (color: oklch(50% 0.1 0)) {
+  .masthead-wrap {
+    background: oklch(97.5% 0.01 82 / 0.88);
+    border-bottom-color: oklch(86% 0.014 80 / 0.65);
+  }
 }
 
 .masthead {
-  width: min(var(--page-max), 100% - var(--page-gutter) * 2);
+  max-width: var(--page-max);
   margin: 0 auto;
+  padding: 0.88rem var(--page-gutter-min);
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: baseline;
   gap: var(--space-xs) var(--space-md);
-  padding: 0.88rem 0;
+}
+
+@media (min-width: 600px) {
+  .masthead {
+    padding-left: var(--page-gutter);
+    padding-right: var(--page-gutter);
+  }
 }
 
 .brand {
@@ -238,9 +273,16 @@ h3 {
 
 /* --- Layout: Page ------------------------------------------------- */
 .page {
-  width: min(var(--page-max), 100% - var(--page-gutter) * 2);
+  max-width: var(--page-max);
   margin: 0 auto;
-  padding: var(--space-2xl) 0 var(--space-3xl);
+  padding: var(--space-2xl) var(--page-gutter-min) var(--space-3xl);
+}
+
+@media (min-width: 600px) {
+  .page {
+    padding-left: var(--page-gutter);
+    padding-right: var(--page-gutter);
+  }
 }
 
 /* --- Hero --------------------------------------------------------- */
@@ -324,10 +366,17 @@ h3 {
   align-content: start;
   gap: var(--space-xs);
   padding: var(--space-md) var(--space-md) var(--space-lg);
-  background: linear-gradient(to bottom, oklch(97% 0.012 82), oklch(95% 0.015 80));
+  background: linear-gradient(to bottom, #f7f3ee, #f0eae2);
   border: 1px solid var(--line);
-  border-radius: 2px;
+  border-radius: 4px;
+  box-shadow: var(--shadow-sm);
   transition: box-shadow var(--duration-med) var(--ease-out-quart);
+}
+
+@supports (color: oklch(50% 0.1 0)) {
+  .app-tile {
+    background: linear-gradient(to bottom, oklch(97% 0.012 82), oklch(95% 0.015 80));
+  }
 }
 
 .app-tile:hover {
@@ -408,7 +457,7 @@ h3 {
 .apps-list {
   margin-top: var(--space-xl);
   display: grid;
-  gap: var(--space-xl);
+  gap: var(--space-lg);
 }
 
 .app-entry {
@@ -416,13 +465,22 @@ h3 {
   gap: var(--space-sm) var(--space-lg);
   grid-template-columns: auto 1fr;
   align-items: start;
-  padding-bottom: var(--space-xl);
-  border-bottom: 1px solid var(--line);
+  padding: var(--space-md);
+  background: linear-gradient(to bottom, #f7f3ee, #f4f0eb);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--duration-med) var(--ease-out-quart);
 }
 
-.app-entry:last-child {
-  border-bottom: none;
-  padding-bottom: 0;
+@supports (color: oklch(50% 0.1 0)) {
+  .app-entry {
+    background: linear-gradient(to bottom, oklch(97% 0.012 82), oklch(96% 0.013 82));
+  }
+}
+
+.app-entry:hover {
+  box-shadow: var(--shadow-md);
 }
 
 .app-icon {
@@ -459,7 +517,7 @@ h3 {
 .pill-link {
   text-decoration: none;
   border: 1px solid var(--line);
-  border-radius: 2px;
+  border-radius: 4px;
   padding: 0.3rem 0.7rem;
   font-size: var(--step-xs);
   font-weight: 500;
@@ -488,22 +546,39 @@ h3 {
 .team-layout {
   margin-top: var(--space-xl);
   display: grid;
-  gap: var(--space-xl);
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-lg);
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 }
 
 .person {
   display: grid;
   align-content: start;
   gap: var(--space-xs);
+  padding: var(--space-md);
+  background: linear-gradient(to bottom, #f7f3ee, #f4f0eb);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--duration-med) var(--ease-out-quart);
+}
+
+@supports (color: oklch(50% 0.1 0)) {
+  .person {
+    background: linear-gradient(to bottom, oklch(97% 0.012 82), oklch(96% 0.013 82));
+  }
+}
+
+.person:hover {
+  box-shadow: var(--shadow-md);
 }
 
 .team-photo {
-  width: min(192px, 100%);
+  width: 100%;
+  max-width: 192px;
   aspect-ratio: 1;
   object-fit: cover;
   border: 1px solid var(--line);
-  border-radius: 2px;
+  border-radius: 4px;
 }
 
 .role {
@@ -528,15 +603,17 @@ h3 {
 }
 
 .faq-item {
-  padding-top: var(--space-xs);
-  border-top: 1px solid var(--line);
+  padding: var(--space-sm) var(--space-md);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--cream-1);
 }
 
 .faq-item h3 {
   font-family: var(--font-body);
   font-size: var(--step-base);
   font-weight: 600;
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.35rem;
 }
 
 .faq-item p {
@@ -549,9 +626,16 @@ h3 {
 .form-placeholder {
   margin-top: var(--space-md);
   min-height: 200px;
-  border: 1px dashed oklch(76% 0.025 74);
-  border-radius: 2px;
-  background: oklch(95% 0.015 82);
+  border: 1px dashed #bfb5a6;
+  border-radius: 4px;
+  background: #f0eae3;
+}
+
+@supports (color: oklch(50% 0.1 0)) {
+  .form-placeholder {
+    border-color: oklch(76% 0.025 74);
+    background: oklch(95% 0.015 82);
+  }
 }
 
 /* --- Privacy (privacy.html) --------------------------------------- */
@@ -595,11 +679,19 @@ h3 {
 }
 
 .footer-inner {
-  width: min(var(--page-max), 100% - var(--page-gutter) * 2);
+  max-width: var(--page-max);
   margin: 0 auto;
+  padding: 0 var(--page-gutter-min);
   display: grid;
   gap: var(--space-md) var(--space-xl);
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+@media (min-width: 600px) {
+  .footer-inner {
+    padding-left: var(--page-gutter);
+    padding-right: var(--page-gutter);
+  }
 }
 
 .footer-inner h2 {
@@ -627,12 +719,19 @@ h3 {
 }
 
 .copyright {
-  width: min(var(--page-max), 100% - var(--page-gutter) * 2);
+  max-width: var(--page-max);
   margin: var(--space-md) auto 0;
-  padding-top: var(--space-sm);
+  padding: var(--space-sm) var(--page-gutter-min) 0;
   border-top: 1px solid var(--line-subtle);
   color: var(--ink-2);
   font-size: var(--step-xs);
+}
+
+@media (min-width: 600px) {
+  .copyright {
+    padding-left: var(--page-gutter);
+    padding-right: var(--page-gutter);
+  }
 }
 
 /* --- Staggered Page-Load Animation -------------------------------- */
@@ -680,7 +779,8 @@ h3 {
 /* --- Responsive: Mobile ------------------------------------------- */
 @media (max-width: 700px) {
   .masthead {
-    padding: 0.72rem 0;
+    padding-top: 0.72rem;
+    padding-bottom: 0.72rem;
   }
 
   .page {
