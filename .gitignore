@@ -1,4 +1,8 @@
 __pycache__/
 .pytest_cache/
+.design-ref/
 *.pyc
-.DS_Store
+team/cato-gen.png
+*.tmp
+*.bak
+*.old
