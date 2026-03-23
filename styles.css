@@ -537,22 +537,6 @@ h3 {
   margin-bottom: var(--space-2xs);
 }
 
-/* Infra card-specific color tokens with Safari-safe fallbacks */
-:root {
-  --infra-card-bg: #faf8f5;
-  --infra-card-border: #e2ddd6;
-  --infra-card-title: #3c3328;
-  --infra-card-body: #5d5448;
-}
-
-@supports (color: oklch(50% 0.1 0)) {
-  :root {
-    --infra-card-bg: oklch(98% 0.008 82);
-    --infra-card-border: oklch(89% 0.012 80);
-    --infra-card-title: oklch(26% 0.025 70);
-    --infra-card-body: oklch(38% 0.02 72);
-  }
-}
 
 .infra-brief {
   margin-top: var(--space-xl);
@@ -573,6 +557,7 @@ h3 {
 @supports (display: grid) {
   .infra-brief {
     margin-left: 0;
+    display: -ms-grid;
     display: grid;
     gap: var(--space-md);
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -600,15 +585,23 @@ h3 {
 }
 
 .infra-block {
+  padding-top: 1rem;
   padding-top: var(--space-md);
+  padding-right: 1rem;
   padding-right: var(--space-md);
+  padding-bottom: 1.5rem;
   padding-bottom: var(--space-lg);
+  padding-left: 1rem;
   padding-left: var(--space-md);
-  background-color: var(--infra-card-bg, #faf8f5);
+  background-color: #faf8f5;
+  background-color: oklch(98% 0.008 82);
   border-width: 1px;
   border-style: solid;
-  border-color: var(--infra-card-border, #e2ddd6);
+  border-color: #e2ddd6;
+  border-color: oklch(89% 0.012 80);
+  -webkit-border-radius: 0.5rem;
   -webkit-border-radius: 8px;
+  border-radius: 0.5rem;
   border-radius: 8px;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -619,13 +612,15 @@ h3 {
   font-size: var(--step-sm);
   font-weight: 700;
   letter-spacing: 0.01em;
-  color: var(--infra-card-title, #3c3328);
+  color: #3c3328;
+  color: oklch(26% 0.025 70);
   margin-bottom: var(--space-2xs);
 }
 
 .infra-block p {
   margin: 0;
-  color: var(--infra-card-body, #5d5448);
+  color: #5d5448;
+  color: oklch(38% 0.02 72);
   font-size: var(--step-sm);
   line-height: 1.55;
 }
@@ -922,14 +917,26 @@ h3 {
 /* --- Staggered Page-Load Animation -------------------------------- */
 .page-load [data-reveal] {
   opacity: 0;
+  -webkit-transform: translate3d(0, 18px, 0);
   transform: translate3d(0, 18px, 0);
+  -webkit-animation: rise-fade 700ms var(--ease-out-expo) forwards;
   animation: rise-fade 700ms var(--ease-out-expo) forwards;
+  -webkit-animation-delay: calc(100ms + (var(--i, 0) * 65ms));
   animation-delay: calc(100ms + (var(--i, 0) * 65ms));
+}
+
+@-webkit-keyframes rise-fade {
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 @keyframes rise-fade {
   to {
     opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
   }
 }
@@ -937,7 +944,11 @@ h3 {
 /* --- Scroll-triggered reveal -------------------------------------- */
 [data-scroll-reveal] {
   opacity: 0;
+  -webkit-transform: translate3d(0, 24px, 0);
   transform: translate3d(0, 24px, 0);
+  -webkit-transition:
+    opacity 600ms var(--ease-out-expo),
+    -webkit-transform 600ms var(--ease-out-expo);
   transition:
     opacity 600ms var(--ease-out-expo),
     transform 600ms var(--ease-out-expo);
@@ -945,13 +956,18 @@ h3 {
 
 [data-scroll-reveal].is-visible {
   opacity: 1;
+  -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
 }
 
 /* Stagger children within a revealed section */
 [data-scroll-reveal] [data-stagger] {
   opacity: 0;
+  -webkit-transform: translate3d(0, 16px, 0);
   transform: translate3d(0, 16px, 0);
+  -webkit-transition:
+    opacity 500ms var(--ease-out-expo),
+    -webkit-transform 500ms var(--ease-out-expo);
   transition:
     opacity 500ms var(--ease-out-expo),
     transform 500ms var(--ease-out-expo);
@@ -959,6 +975,7 @@ h3 {
 
 [data-scroll-reveal].is-visible [data-stagger] {
   opacity: 1;
+  -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
   transition-delay: calc(var(--stagger, 0) * 80ms);
 }
