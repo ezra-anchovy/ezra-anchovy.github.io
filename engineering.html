@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en" class="page-load">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="How Anchovy Labs builds software — agentic development infrastructure, quality gating, model routing, and observability.">
+  <meta property="og:title" content="Anchovy Labs | Engineering">
+  <meta property="og:description" content="The hard problems behind shipping AI-native software at startup speed.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://anchovylabs.ai/engineering.html">
+  <title>Anchovy Labs | Engineering</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&display=swap">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="masthead-wrap">
+    <div class="masthead">
+      <a class="brand" href="index.html">Anchovy Labs</a>
+      <nav aria-label="Primary navigation">
+        <ul class="nav-list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="apps.html">Apps</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+          <li><a href="support.html">Support</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page">
+    <section class="hero" data-reveal style="--i:0">
+      <span class="hero-kicker">Development Infrastructure</span>
+      <h1>Hard problems we're working on</h1>
+      <p class="lede">Using AI to write code is the easy part. The hard part is making agentic workflows reliable enough to trust. These are the questions we spend most of our infrastructure time on.</p>
+    </section>
+
+    <section class="section infra-pillar" data-scroll-reveal>
+      <div class="infra-brief">
+        <div class="infra-block" data-stagger style="--stagger:0">
+          <h3>Quality at generation speed</h3>
+          <p>Agents produce code faster than humans can review it. We gate every change against spec-driven acceptance criteria before it merges — automated verification, not trust. It catches more than manual review did, but calibrating the gates is ongoing work.</p>
+        </div>
+        <div class="infra-block" data-stagger style="--stagger:1">
+          <h3>Context across long-running work</h3>
+          <p>A session that loses context mid-task makes worse decisions than one that never had it. We maintain structured memory across sessions so that decisions, constraints, and domain knowledge persist. Getting compaction right — what to keep, what to drop — is harder than it sounds.</p>
+        </div>
+        <div class="infra-block" data-stagger style="--stagger:2">
+          <h3>Model routing</h3>
+          <p>We route through a model hierarchy that optimizes for correctness first, cost second, speed third. The routing adapts automatically when providers go down. This isn't novel — it's table stakes — but getting it reliable across many providers took longer than expected.</p>
+        </div>
+        <div class="infra-block" data-stagger style="--stagger:3">
+          <h3>Detecting when things go off track</h3>
+          <p>Autonomous processes fail silently in ways that are expensive to debug after the fact. We use stagnation detection and circuit breakers to catch drift early. It works well enough that we trust unattended runs, but the false-positive rate is still higher than we'd like.</p>
+        </div>
+        <div class="infra-block" data-stagger style="--stagger:4">
+          <h3>Observability</h3>
+          <p>You can't trust a system you can't see into. Every session, routing decision, and verification outcome is logged and traceable. The goal is that any failure can be understood from the logs alone — we're close but not there yet.</p>
+        </div>
+        <div class="infra-block" data-stagger style="--stagger:5">
+          <h3>Giving agents the right knowledge</h3>
+          <p>General-purpose models make generic decisions. We maintain curated knowledge bases — domain documents, verified research, internal doctrine — that agents retrieve at decision time. The retrieval layer is tuned so agents get relevant context without drowning in noise. Building the knowledge is the easy part; keeping it current and knowing when to distrust it is the ongoing work.</p>
+        </div>
+      </div>
+      <p class="infra-coda">None of this is solved. It's infrastructure we build and revise continuously because the alternative is slowing down or shipping lower quality work. Neither is acceptable.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <section>
+        <h2>Contact</h2>
+        <p><a href="mailto:info@anchovylabs.ai">info@anchovylabs.ai</a></p>
+        <p style="margin-top:0.5rem">New York, NY</p>
+      </section>
+      <section>
+        <h2>Explore</h2>
+        <p><a href="index.html">Home</a></p>
+        <p><a href="apps.html">Apps</a></p>
+        <p><a href="about.html">About</a></p>
+        <p><a href="privacy.html">Privacy</a></p>
+      </section>
+      <section>
+        <h2>Company</h2>
+        <p>AI-native product studio focused on privacy-first iOS software.</p>
+      </section>
+    </div>
+    <p class="copyright">&copy; 2026 Anchovy Labs LLC &middot; New York, NY</p>
+  </footer>
+
+  <script>
+    (function () {
+      var targets = document.querySelectorAll('[data-scroll-reveal]');
+      if (!targets.length) return;
+      if (!('IntersectionObserver' in window)) {
+        targets.forEach(function (el) { el.classList.add('is-visible'); });
+        return;
+      }
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+      targets.forEach(function (el) { observer.observe(el); });
+    })();
+  </script>
+</body>
+</html>

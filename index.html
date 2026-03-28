@@ -70,8 +70,8 @@
           <p class="metric-label">Apps live on the App Store</p>
         </li>
         <li data-stagger style="--stagger:2">
-          <p class="metric-value">10+</p>
-          <p class="metric-label">AI models used across build and QA workflows</p>
+          <p class="metric-value">3</p>
+          <p class="metric-label">Revenue models: freemium, one-time purchase, pro upgrades</p>
         </li>
       </ul>
     </section>
@@ -81,7 +81,7 @@
       <div class="featured-apps">
         <article class="app-tile" data-stagger style="--stagger:0">
           <img class="app-tile-icon" src="qrion/assets/icon.webp" alt="QRion app icon" width="56" height="56" loading="lazy">
-          <p class="status live">Live on the App Store</p>
+          <p class="status live">Live on the App Store · Launched March 2026</p>
           <h3><a href="apps.html#qrion">QRion</a></h3>
           <p>Safer QR scanning with destination previews and threat-aware link checks.</p>
           <a class="cta-inline" href="https://apps.apple.com/app/id6760600108" target="_blank" rel="noopener noreferrer">
@@ -92,7 +92,7 @@
 
         <article class="app-tile" data-stagger style="--stagger:1">
           <img class="app-tile-icon" src="assets/app-icons/preciq.webp" alt="Preciq app icon" width="56" height="56" loading="lazy">
-          <p class="status live">Live on the App Store</p>
+          <p class="status live">Live on the App Store · Launched March 2026</p>
           <h3><a href="apps.html#preciq">Preciq</a></h3>
           <p>Fast, precise unit conversion — length, weight, temperature, volume, and more.</p>
           <a class="cta-inline" href="https://apps.apple.com/app/id6760600197" target="_blank" rel="noopener noreferrer">
@@ -117,39 +117,11 @@
       </div>
     </section>
 
-    <section class="section infra-pillar" data-scroll-reveal>
-      <span class="hero-kicker">Development Infrastructure</span>
-      <h2>Hard problems we're working on</h2>
-      <p class="section-intro">Using AI to write code is the easy part. The hard part is making agentic workflows reliable enough to trust. These are the questions we spend most of our infrastructure time on.</p>
-
-      <div class="infra-brief">
-        <div class="infra-block" data-stagger style="--stagger:0">
-          <h3>Quality at generation speed</h3>
-          <p>Agents produce code faster than humans can review it. We gate every change against spec-driven acceptance criteria before it merges — automated verification, not trust. It catches more than manual review did, but calibrating the gates is ongoing work.</p>
-        </div>
-        <div class="infra-block" data-stagger style="--stagger:1">
-          <h3>Context across long-running work</h3>
-          <p>A session that loses context mid-task makes worse decisions than one that never had it. We maintain structured memory across sessions so that decisions, constraints, and domain knowledge persist. Getting compaction right — what to keep, what to drop — is harder than it sounds.</p>
-        </div>
-        <div class="infra-block" data-stagger style="--stagger:2">
-          <h3>Model routing</h3>
-          <p>We route through a model hierarchy that optimizes for correctness first, cost second, speed third. The routing adapts automatically when providers go down. This isn't novel — it's table stakes — but getting it reliable across many providers took longer than expected.</p>
-        </div>
-        <div class="infra-block" data-stagger style="--stagger:3">
-          <h3>Detecting when things go off track</h3>
-          <p>Autonomous processes fail silently in ways that are expensive to debug after the fact. We use stagnation detection and circuit breakers to catch drift early. It works well enough that we trust unattended runs, but the false-positive rate is still higher than we'd like.</p>
-        </div>
-        <div class="infra-block" data-stagger style="--stagger:4">
-          <h3>Observability</h3>
-          <p>You can't trust a system you can't see into. Every session, routing decision, and verification outcome is logged and traceable. The goal is that any failure can be understood from the logs alone — we're close but not there yet.</p>
-        </div>
-        <div class="infra-block" data-stagger style="--stagger:5">
-          <h3>Giving agents the right knowledge</h3>
-          <p>General-purpose models make generic decisions. We maintain curated knowledge bases — domain documents, verified research, internal doctrine — that agents retrieve at decision time. The retrieval layer is tuned so agents get relevant context without drowning in noise. Building the knowledge is the easy part; keeping it current and knowing when to distrust it is the ongoing work.</p>
-        </div>
-      </div>
-
-      <p class="infra-coda">None of this is solved. It's infrastructure we build and revise continuously because the alternative is slowing down or shipping lower quality work. Neither is acceptable.</p>
+    <section class="section" data-scroll-reveal>
+      <span class="hero-kicker">How We Build</span>
+      <h2>AI-native development, production-grade discipline</h2>
+      <p class="section-intro">We use multi-agent AI workflows to move from concept to production in weeks. Our development infrastructure handles automated testing, model routing, context management, and quality gating — so we ship fast without cutting corners.</p>
+      <p><a href="engineering.html" style="color: var(--c-accent, #0071e3); text-decoration: none; font-weight: 500;">Read about our engineering approach →</a></p>
     </section>
   </main>
 
@@ -157,7 +129,7 @@
     <div class="footer-inner">
       <section>
         <h2>Contact</h2>
-        <p><a href="mailto:support@anchovylabs.ai">support@anchovylabs.ai</a></p>
+        <p><a href="mailto:info@anchovylabs.ai">info@anchovylabs.ai</a></p>
         <p style="margin-top:0.5rem">New York, NY</p>
       </section>
       <section>
